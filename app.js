@@ -1,8 +1,8 @@
-/* Sanad landing page. Vanilla JS, no dependencies.
+/* Radar AI landing page. Vanilla JS, no dependencies.
    SET YOUR NUMBER: change WA below to the WhatsApp number that should receive leads. */
 (() => {
   const WA = '961XXXXXXXX'; // digits only, country code first, no + and no spaces
-  const WA_TEXT = "Hi Sanad, I'd like the free audit. My company is ";
+  const WA_TEXT = "Hi Radar team, I'd like the free audit. My company is ";
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -646,7 +646,7 @@
       form.classList.add('is-sent');
       note.textContent = 'Got it. You will hear from Charles today or tomorrow morning.';
     } catch (err) {
-      const msg = `Hi Sanad, I'd like the free audit.\nName: ${data.get('name') || ''}\nCompany: ${data.get('company') || ''} (${data.get('business') || ''})\nWhatsApp: ${data.get('whatsapp') || ''}\nWhat eats my week: ${data.get('pain') || ''}`;
+      const msg = `Hi Radar team, I'd like the free audit.\nName: ${data.get('name') || ''}\nCompany: ${data.get('company') || ''} (${data.get('business') || ''})\nWhatsApp: ${data.get('whatsapp') || ''}\nWhat eats my week: ${data.get('pain') || ''}`;
       if (waReady) { open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener'); note.textContent = 'Opening WhatsApp with your details.'; }
       else note.textContent = 'The form is not connected yet. Send these details to Charles on WhatsApp and he will pick them up.';
       btn.disabled = false; btn.innerHTML = 'Send it <span class="arr" aria-hidden="true">→</span>';

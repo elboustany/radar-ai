@@ -1,4 +1,4 @@
-/* Sanad landing page. Light theme. Vanilla CSS, no build step. */
+/* Radar landing page. Light theme. Vanilla CSS, no build step. */
 
 :root{
   --bg:#FFFFFF; --bg-2:#F5F9FB; --bg-3:#ECF3F7; --card:#FFFFFF;
@@ -67,10 +67,11 @@ main,.nav,.foot,.sticky{position:relative;z-index:1}
 .nav.is-stuck{border-color:var(--line);background:rgba(255,255,255,.94);box-shadow:0 10px 30px -24px rgba(11,26,36,.5)}
 .nav__in{display:flex;align-items:center;gap:24px;height:74px}
 .brand{display:inline-flex;align-items:center;gap:11px}
-.brand__mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--navy)}
-.brand__mark svg{width:26px;height:26px}
+.brand__mark{display:block;width:40px;height:40px}
+.brand__mark svg{display:block;width:40px;height:40px}
 .brand__name{font-weight:800;font-size:22px;letter-spacing:-.02em;display:inline-flex;align-items:baseline;gap:8px}
 .brand__name em{font:500 15px/1 var(--ar);font-style:normal;color:var(--muted)}
+.brand__ai{font:700 11px/1 var(--mono);font-style:normal;letter-spacing:.06em;padding:4px 6px;border-radius:6px;background:var(--teal-soft);color:#0B7D6A;align-self:flex-start;margin-left:-4px;margin-top:1px}
 .nav__links{display:flex;gap:26px;margin-left:auto;font-size:15px;color:var(--ink-2)}
 .nav__links a:hover{color:var(--ink)}
 .nav .btn{flex:none}
@@ -101,8 +102,8 @@ main,.nav,.foot,.sticky{position:relative;z-index:1}
 .phone__who{display:flex;align-items:center;gap:11px;min-width:0}
 .phone__who>span{min-width:0}
 .phone__who i{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.phone__av{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#12384F}
-.phone__av svg{width:24px;height:24px}
+.phone__av{display:block;width:38px;height:38px}
+.phone__av svg{display:block;width:38px;height:38px}
 .phone__who b{display:block;font-size:15.5px;font-weight:700;line-height:1.2}
 .phone__who i{font:500 11.5px/1.4 var(--mono);font-style:normal;color:#8FE8D4}
 .lang{display:inline-flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.12)}

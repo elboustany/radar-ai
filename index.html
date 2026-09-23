@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanad · Busy all month. So where is the money?</title>
+<meta name="description" content="Your systems count sales. Sanad finds profit: per product, per customer, per branch. Ask it anything in Arabic or English. Built for companies in Lebanon. Free 30 minute audit.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Busy all month. So where is the money?">
+<meta property="og:description" content="An AI operator built around your systems. One message at 7am, answers in Arabic or English, and the repetitive work off your team.">
+<meta property="og:image" content="img/share-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B2333'/%3E%3Cpath d='M18 40c6 6 22 6 28 0' stroke='%2315C7A4' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M18 26c6-6 22-6 28 0' stroke='%23F0B25A' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- illustration sprite. Drawn here, used with <svg class="ill"><use href="#i-..."/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-audit" viewBox="0 0 132 96">
+      <rect x="10" y="12" width="60" height="72" rx="8" fill="#EAF2F7"/>
+      <rect x="18" y="4" width="44" height="14" rx="7" fill="#0B2333"/>
+      <path d="M22 34h30M22 46h36M22 58h22" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M22 70h14" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <circle cx="92" cy="44" r="24" fill="#fff" stroke="#0E9E86" stroke-width="4.5"/>
+      <path d="M82 45l7 7 14-16" stroke="#0E9E86" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M109 62l14 16" stroke="#0B2333" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="30" cy="88" r="4" fill="#D9880F"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 132 96">
+      <path d="M8 24l36-14 44 14 36-14v62l-36 14-44-14-36 14z" fill="#EAF2F7"/>
+      <path d="M44 10v62M88 24v62" stroke="#CBDDE7" stroke-width="3"/>
+      <path d="M24 62c14-4 16-22 32-22s18 16 34 10" stroke="#0E9E86" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-dasharray="1 10"/>
+      <path d="M24 62c0-6 4-10 4-10" stroke="#0E9E86" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="24" cy="62" r="7" fill="#0B2333"/>
+      <path d="M90 50c6 0 11 5 11 11 0 8-11 17-11 17s-11-9-11-17c0-6 5-11 11-11z" fill="#D9880F"/>
+      <circle cx="90" cy="61" r="4" fill="#fff"/>
+    </symbol>
+    <symbol id="i-build" viewBox="0 0 132 96">
+      <rect x="44" y="30" width="44" height="36" rx="9" fill="#0B2333"/>
+      <path d="M56 42h20M56 54h12" stroke="#15C7A4" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M44 48H24V20h16M88 48h20V20H92M44 60H24v20h16M88 60h20v20H92" stroke="#CBDDE7" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <rect x="6" y="10" width="22" height="20" rx="6" fill="#DFF3EE" stroke="#0E9E86" stroke-width="3"/>
+      <rect x="104" y="10" width="22" height="20" rx="6" fill="#FBEEDA" stroke="#D9880F" stroke-width="3"/>
+      <rect x="6" y="70" width="22" height="20" rx="6" fill="#FBEEDA" stroke="#D9880F" stroke-width="3"/>
+      <rect x="104" y="70" width="22" height="20" rx="6" fill="#DFF3EE" stroke="#0E9E86" stroke-width="3"/>
+      <circle cx="66" cy="12" r="6" fill="#D9880F"/>
+      <path d="M66 18v12" stroke="#CBDDE7" stroke-width="3.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-runs" viewBox="0 0 132 96">
+      <rect x="34" y="6" width="64" height="84" rx="12" fill="#EAF2F7" stroke="#CBDDE7" stroke-width="3"/>
+      <rect x="34" y="6" width="64" height="22" rx="12" fill="#0B2333"/>
+      <rect x="56" y="14" width="20" height="5" rx="2.5" fill="#15C7A4"/>
+      <rect x="42" y="36" width="42" height="16" rx="8" fill="#fff" stroke="#CBDDE7" stroke-width="2.6"/>
+      <path d="M50 44h22" stroke="#7D97A6" stroke-width="3" stroke-linecap="round"/>
+      <rect x="52" y="58" width="38" height="16" rx="8" fill="#DFF3EE"/>
+      <path d="M60 66h20" stroke="#0E9E86" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="20" cy="58" r="16" fill="#fff" stroke="#D9880F" stroke-width="4"/>
+      <path d="M20 49v9l6 4" stroke="#D9880F" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M104 62l6-12 6 20 6-28 6 20" stroke="#0E9E86" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-ask" viewBox="0 0 132 96">
+      <path d="M14 14h72a10 10 0 0110 10v30a10 10 0 01-10 10H44L26 78V64H14A10 10 0 014 54V24a10 10 0 0110-10z" fill="#EAF2F7"/>
+      <path d="M36 32c0-7 6-11 13-11s13 4 13 11c0 8-11 8-13 15" stroke="#0B2333" stroke-width="4.4" fill="none" stroke-linecap="round"/>
+      <circle cx="49" cy="55" r="3.6" fill="#D9880F"/>
+      <path d="M84 40h30a8 8 0 018 8v20a8 8 0 01-8 8h-4v10l-12-10H84a8 8 0 01-8-8V48a8 8 0 018-8z" fill="#0B2333"/>
+      <path d="M90 56h22M90 66h14" stroke="#15C7A4" stroke-width="3.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cost" viewBox="0 0 132 96">
+      <path d="M22 8h54a6 6 0 016 6v74l-11-7-11 7-11-7-11 7-11-7-11 7V14a6 6 0 016-6z" fill="#fff" stroke="#CBDDE7" stroke-width="3.4"/>
+      <path d="M32 30h34M32 42h24" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M32 58h20" stroke="#0E9E86" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="96" cy="56" r="26" fill="#FBEEDA" stroke="#D9880F" stroke-width="4"/>
+      <path d="M96 40v32M104 47c-2-4-6-5-9-5-5 0-8 3-8 7 0 9 17 5 17 14 0 4-4 7-9 7-4 0-8-2-10-5" stroke="#D9880F" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-read" viewBox="0 0 64 64">
+      <rect x="10" y="8" width="34" height="48" rx="6" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M18 20h18M18 30h18M18 40h10" stroke="#8FB2C4" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="44" cy="40" r="12" fill="#0B2333" stroke="#15C7A4" stroke-width="3"/>
+      <path d="M38 40h12M44 34v12" stroke="#15C7A4" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-match" viewBox="0 0 64 64">
+      <rect x="6" y="14" width="22" height="34" rx="5" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <rect x="36" y="14" width="22" height="34" rx="5" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M12 24h10M12 32h8M42 24h10M42 32h8" stroke="#8FB2C4" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="32" cy="42" r="11" fill="#0B2333" stroke="#F0B25A" stroke-width="3"/>
+      <path d="M27 42l4 4 7-8" stroke="#F0B25A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-price" viewBox="0 0 64 64">
+      <path d="M34 6H14a8 8 0 0 0-8 8v20l26 26 24-24z" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.6" stroke-linejoin="round"/>
+      <circle cx="20" cy="20" r="4.5" fill="#15C7A4"/>
+      <path d="M44 46l10-10M48 34h8v8" stroke="#F0B25A" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-hunt" viewBox="0 0 64 64">
+      <circle cx="28" cy="28" r="19" fill="rgba(255,255,255,.06)" stroke="#8FB2C4" stroke-width="2.6"/>
+      <path d="M28 9v19l13 8" stroke="#15C7A4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="28" cy="28" r="7" fill="none" stroke="#15C7A4" stroke-width="2.2" opacity=".6"/>
+      <path d="M43 43l13 13" stroke="#F0B25A" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-pen" viewBox="0 0 64 64">
+      <path d="M8 12h36a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H24L12 52V42H8a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6z" transform="translate(4,0)" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M18 24h20M18 32h12" stroke="#8FB2C4" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M40 44l14-14 6 6-14 14-8 2z" fill="#0B2333" stroke="#F0B25A" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-sun" viewBox="0 0 64 64">
+      <path d="M6 44h52" stroke="#8FB2C4" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M16 44a16 16 0 0 1 32 0z" fill="rgba(240,178,90,.22)" stroke="#F0B25A" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M32 10v7M12 20l5 5M52 20l-5 5" stroke="#F0B25A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M18 54h10M34 54h12" stroke="#15C7A4" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+      <span class="brand__name">Sanad<em>سند</em></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#see">See it work</a>
+      <a href="#night">While you sleep</a>
+      <a href="#who">Who it is for</a>
+      <a href="#pricing">Price</a>
+      <a href="#proof">Who we are</a>
+      <a href="restaurants.html">Restaurants</a>
+    </nav>
+    <a class="btn btn--sm" data-wa href="#audit">Book the free audit</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero hero--v2">
+    <div class="wrap">
+      <div class="hero__top">
+        <p class="kicker rv">For companies in Lebanon</p>
+        <h1 class="rv">Busy all month. <em>So where is the money?</em></h1>
+        <p class="lead rv">Your systems count sales. Our intelligence finds profit: per product, per customer, per branch. Ask it anything, any hour, in Arabic or English.</p>
+        <div class="cta-row rv">
+          <a class="btn" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a>
+          <a class="tlink" href="#see">See it on your business</a>
+        </div>
+      </div>
+      <figure class="player player--hero rv" id="player">
+        <video id="filmVid" class="player__v" poster="film/poster.jpg" autoplay muted loop playsinline preload="metadata"
+               aria-label="What Sanad does for your business, the film">
+          <source src="film/sanad-60.mp4" type="video/mp4" media="(min-width: 800px)">
+          <source src="film/sanad-60-720.mp4" type="video/mp4">
+        </video>
+        <button class="player__sound" id="filmSound" type="button" aria-label="Play the film with sound">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+          <span>Tap for sound<i>1:25 · the whole story</i></span>
+        </button>
+      </figure>
+      <ul class="ticks ticks--row rv">
+        <li>Answers you in 5 seconds</li>
+        <li>Arabic or English</li>
+        <li>Works with your systems</li>
+        <li>Running in 2 weeks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LAST NIGHT IT FOUND -->
+  <section class="found" id="found">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Last night, on one company’s numbers</p>
+        <h2 class="rv">Three things it found <em>before the owner woke up.</em></h2>
+      </header>
+      <div class="found__grid">
+        <div class="found__card rv"><i>Margin leak</i><b>$1,900</b><span>a month, from one promotion nobody re-checked</span></div>
+        <div class="found__card found__card--bad rv"><i>Supplier moved</i><b>+7%</b><span>on Tuesday’s invoice. No notice. Nobody caught it.</span></div>
+        <div class="found__card found__card--bad rv"><i>Cash at risk</i><b>45 days</b><span>one customer, with another order booked for tomorrow</span></div>
+      </div>
+      <p class="note rv">Sample numbers. Yours run on your own rows, every night.</p>
+    </div>
+  </section>
+
+  <!-- SEE IT ON YOUR BUSINESS -->
+  <section class="see" id="see">
+    <div class="wrap see__grid">
+      <div class="see__copy">
+        <p class="kicker rv">A small demo, on made-up numbers</p>
+        <h2 class="rv">Try it. <em>Pick your kind of business.</em></h2>
+        <p class="lead rv">This is a mini demo with sample numbers, so you can see how it thinks. Pick your business type, tap a question, switch it to Arabic. Yours runs on your real data.</p>
+        <div class="pick rv" id="pick">
+          <p class="pick__lab">Your business type. The demo and the numbers below change with it.</p>
+          <div class="pick__row" role="tablist" aria-label="Business type">
+            <button class="pick__btn" role="tab" data-ind="retail" aria-selected="false">Retail &amp; shops</button>
+            <button class="pick__btn" role="tab" data-ind="resto" aria-selected="false">Restaurants &amp; cafés</button>
+            <button class="pick__btn is-on" role="tab" data-ind="dist" aria-selected="true">Distribution</button>
+            <button class="pick__btn" role="tab" data-ind="ecom" aria-selected="false">Online store</button>
+          </div>
+        </div>
+        <a class="btn rv" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero__demo rv" id="demo">
+        <div class="phone">
+          <div class="phone__notch" aria-hidden="true"></div>
+          <div class="phone__bar">
+            <span class="phone__who">
+              <span class="phone__av" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+              <span><b>Sanad</b><i id="demoWho">online · Karam Group</i></span>
+            </span>
+            <span class="lang" role="group" aria-label="Language">
+              <button type="button" class="lang__btn is-on" data-lang="en">EN</button>
+              <button type="button" class="lang__btn" data-lang="ar">ع</button>
+            </span>
+          </div>
+          <div class="thread" id="thread" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <p class="demo__note">Sample numbers. Tap a question. Switch it to Arabic. The thinking is real.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="night" id="night">
+    <div class="wrap">
+      <header class="head head--on">
+        <p class="kicker rv">While you sleep</p>
+        <h2 class="rv">You close at midnight. <em>It starts at midnight.</em></h2>
+        <p class="lead rv">Six jobs nobody in your company has time for. Your intelligence officer does them all before your first coffee.</p>
+      </header>
+      <ol class="night__list">
+        <li class="rv" style="--i:0">
+          <span class="night__t">22:10</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-read"/></svg></span>
+          <div><h3>It reads today</h3><p>Sales against stock, orders against what shipped. Twelve lines disagree tonight.</p></div>
+        </li>
+        <li class="rv" style="--i:1">
+          <span class="night__t">23:30</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-match"/></svg></span>
+          <div><h3>It reconciles the day</h3><p>POS against the bank, courier sheet against orders. It finds the gap before your accountant.</p></div>
+        </li>
+        <li class="rv" style="--i:2">
+          <span class="night__t">01:40</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-price"/></svg></span>
+          <div><h3>It re-costs what you sell</h3><p>New invoices hit every product. Two items just went under your margin.</p></div>
+        </li>
+        <li class="rv" style="--i:3">
+          <span class="night__t">03:20</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-hunt"/></svg></span>
+          <div><h3>It hunts for changes</h3><p>A customer who stopped. A campaign that turned. Stock four days from running out.</p></div>
+        </li>
+        <li class="rv" style="--i:4">
+          <span class="night__t">06:40</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-pen"/></svg></span>
+          <div><h3>It writes your messages</h3><p>The 41 day chase, the supplier question, the stock order. Ready to send.</p></div>
+        </li>
+        <li class="rv" style="--i:5">
+          <span class="night__t">07:00</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-sun"/></svg></span>
+          <div><h3>It wakes you with 3 decisions</h3><p>Not 30 numbers. Three moves, with the money on each one.</p></div>
+        </li>
+      </ol>
+      <p class="night__foot rv">Your team logs into nothing. Nothing leaves your accounts. It simply works the night shift.</p>
+      <p class="gap__cta rv"><a class="btn btn--light" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a><span>Thirty minutes. Bring last month.</span></p>
+    </div>
+  </section>
+  <section class="who-for" id="who">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Who we build for</p>
+        <h2 class="rv">Five people or two hundred. <em>Same leaks.</em></h2>
+        <p class="lead rv">Click the one that looks like you. The first four change this whole page.</p>
+      </header>
+      <div class="whogrid">
+        <button class="whocard rv" data-ind="retail">
+          <span class="whocard__img"><img src="img/biz-retail.webp" alt="A shop owner checking a tablet behind the counter of his store" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Retail groups &amp; shops</b>
+          <span class="whocard__pain">You compare branches from three exports and you always find out late.</span>
+          <span class="whocard__caps"><i>Profit by branch, daily</i><i>Stock warnings before you run out</i><i>Supplier price rises caught</i><i>Customers who went quiet</i><i>Basket and margin by line</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="resto">
+          <span class="whocard__img"><img src="img/biz-resto.webp" alt="A chef plating a dish at a restaurant pass" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Restaurants &amp; cafés</b>
+          <span class="whocard__pain">Food cost creeps for weeks before anybody sees it in the accounts.</span>
+          <span class="whocard__caps"><i>Prime cost every morning</i><i>Profit per dish</i><i>Delivery apps reconciled</i><i>Tomorrow’s prep</i><i>Portion drift caught</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="dist">
+          <span class="whocard__img"><img src="img/biz-dist.webp" alt="A warehouse worker with a clipboard beside a delivery van" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Distribution &amp; wholesale</b>
+          <span class="whocard__pain">Routes, credit and stock all live in different heads.</span>
+          <span class="whocard__caps"><i>Profit per route and per drop</i><i>Late accounts chased</i><i>Stockouts before they happen</i><i>Credit limits watched</i><i>Driver and van cost</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="ecom">
+          <span class="whocard__img"><img src="img/biz-ecom.webp" alt="A young woman taping parcels at an ecommerce packing table" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Online stores</b>
+          <span class="whocard__pain">Ads eat the margin, cash on delivery rejections hide the real number.</span>
+          <span class="whocard__caps"><i>Profit after ads and shipping</i><i>Rejections by area</i><i>Winning creative spotted</i><i>Stock against ad spend</i><i>Repeat rate by product</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/biz-clinic.webp" alt="A receptionist at a bright modern clinic" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Clinics, labs &amp; pharmacies</b>
+          <span class="whocard__pain">Bookings, stock and insurance paperwork sit in three systems that never speak.</span>
+          <span class="whocard__caps"><i>Daily patient and revenue brief</i><i>Expiry and stock alerts</i><i>Claims chased</i><i>No-show patterns</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/biz-contractor.webp" alt="A site supervisor in a hard hat checking a tablet" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Contractors &amp; services</b>
+          <span class="whocard__pain">You quote from memory and find out the job lost money at the end.</span>
+          <span class="whocard__caps"><i>Cost per job against quote</i><i>Hours and materials tracked</i><i>Invoices chased</i><i>Which jobs to stop quoting</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/biz-factory.webp" alt="A worker inspecting fabric in a small textile workshop" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Factories &amp; workshops</b>
+          <span class="whocard__pain">Production, orders and raw materials each live on a different sheet.</span>
+          <span class="whocard__caps"><i>Output against plan</i><i>Material coverage</i><i>Late order warnings</i><i>True cost per unit</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/biz-agency.webp" alt="Three people working in a small creative office" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Agencies &amp; offices</b>
+          <span class="whocard__pain">Everyone is busy and nobody can say which client actually pays for itself.</span>
+          <span class="whocard__caps"><i>Profit per client</i><i>Hours against retainer</i><i>Invoices and follow ups</i><i>Scope creep flagged</i></span>
+          
+          </span>
+        </div>
+      </div>
+      <p class="note note--link rv">Run a restaurant, a café or a delivery kitchen? <a href="restaurants-v1.html">There is a whole page built for you, with your numbers on it →</a></p>
+    </div>
+  </section>
+  <section class="price-sec" id="pricing">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Straight answer on price</p>
+        <h2 class="rv">We put the number here <em>so you can decide before the call.</em></h2>
+        <p class="lead rv">Nobody enjoys a call that ends in a surprise. Here is the shape of it. The exact number comes out of the free audit, once we know how messy your data really is.</p>
+      </header>
+
+      <div class="tiers rv">
+        <div class="tier">
+          <span class="tier__tag">Start here</span>
+          <h3>One system</h3>
+          <p class="tier__price"><b>$3,500</b><i>to build</i></p>
+          <p class="tier__run">then <b>$450</b> a month to run it</p>
+          <ul>
+            <li>Your morning intelligence brief at 07:00, Arabic or English</li><li>Ask it anything, any hour, from your own rows</li><li>Real profit after costs, per product and per customer</li><li>Alerts on price rises, slow stock and quiet customers</li>
+          </ul>
+          <p class="tier__for">For one company with one main system holding the truth.</p>
+        </div>
+        <div class="tier tier--hot">
+          <span class="tier__tag">Most companies start here</span>
+          <h3>Everything connected</h3>
+          <p class="tier__price"><b>$5,500</b><i>to build</i></p>
+          <p class="tier__run">then <b>$650</b> a month to run it</p>
+          <ul>
+            <li>Everything in One system</li><li>Sales, stock, ads, couriers and bank reconciled together</li><li>Weekly report to you and your managers</li><li>It drafts your chases and supplier messages</li>
+          </ul>
+          <p class="tier__for">For companies where the numbers live in four different places.</p>
+        </div>
+        <div class="tier tier--dark">
+          <span class="tier__tag">Bigger</span>
+          <h3>Built around you</h3>
+          <p class="tier__price"><b>Let us look</b></p>
+          <p class="tier__run">quoted after the audit</p>
+          <ul>
+            <li>Many systems, many locations, or a system nobody else will touch</li>
+            <li>Your own rules, your own approvals, your own language</li>
+            <li>It writes and sends, not only reports</li>
+          </ul>
+          <p class="tier__for">For groups and companies where one point of margin is real money.</p>
+        </div>
+      </div>
+
+      <div class="price-why rv">
+        <div>
+          <h3>What moves the number</h3>
+          <ul class="price-why__list">
+            <li><b>How many systems talk.</b> One POS is quick. A POS, three delivery apps and a paper invoice file takes longer.</li>
+            <li><b>How messy the data is.</b> We have seen worse than yours. It still costs time.</li>
+            <li><b>How much it does by itself.</b> Reading is cheap. Writing, chasing and sending costs more to build and is worth more to you.</li>
+          </ul>
+        </div>
+        <div class="price-not">
+          <h3>When we say no</h3>
+          <p>If one person can still hold your whole business in their head, you do not need us yet. We will say so.</p>
+          <p>We would rather tell you on a free call than take money for something that will not pay you back.</p>
+        </div>
+      </div>
+
+      <p class="price-cta rv">
+        <a class="btn" data-wa href="#audit">Get your number <span class="arr" aria-hidden="true">→</span></a>
+        <span>Thirty minutes. No deck, no sales sequence.</span>
+      </p>
+    </div>
+  </section>
+  <section class="gap" id="gap">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">What waiting costs</p>
+        <h2 class="rv">Every month you wait, you hand over <em id="gapBig">$11,267</em>.</h2>
+        <p class="lead rv">Two points of margin on your sales. Nobody loses a company in one quarter. It goes two points at a time.</p>
+      </header>
+      <div class="gap__grid rv">
+        <figure class="panel">
+          <figcaption><b>Two points of margin, compounded</b><span class="legend"><i class="l-mint"></i>you, moving<i class="l-dim"></i>you, waiting</span></figcaption>
+          <svg class="chart" id="chartGap" viewBox="0 0 560 300" role="img" aria-label="What two points of margin adds up to over twenty four months"></svg>
+          <p class="panel__note" id="gapNote"></p>
+        </figure>
+        <ul class="gap__pts">
+        <li><b>Everyone gets the same tools now.</b> This used to need a data team and a year. Now it takes two weeks. Whoever moves first wins the year.</li>
+        <li><b>Speed is the whole game.</b> Catch the leak in week one, not week seven. Same team, same customers, six weeks of margin saved.</li>
+        <li><b>You need zero new customers.</b> Every dollar in that chart already came through your business once.</li>
+        <li><b>Your competitor is not smarter.</b> He just knows on Tuesday what you find out in March.</li>
+        </ul>
+      </div>
+      <p class="gap__cta rv">
+        <a class="btn" data-wa href="#audit">Start before they do <span class="arr" aria-hidden="true">→</span></a>
+        <span>Thirty minutes, free, and the map is yours either way.</span>
+      </p>
+    </div>
+  </section>
+  <!-- CLIENTS. Six placeholders in square brackets: swap each for the real logo, quote and name. -->
+  <section class="clients" id="proof">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Who we have worked with</p>
+        <h2 class="rv">Companies in Lebanon and abroad <em>that run on this today.</em></h2>
+        <p class="lead rv">Six of them, and what their owners said after the first month.</p>
+      </header>
+      <div class="refs">
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 1 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 2 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 3 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 4 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 5 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+        <article class="ref rv">
+          <div class="ref__logo"><span>[Client 6 logo]</span></div>
+          <p class="ref__quote">&ldquo;[One or two sentences from the owner about what changed. Keep the strongest number in the first sentence.]&rdquo;</p>
+          <p class="ref__who"><b>[Owner name]</b><span>[Role], [Company] · [City]</span></p>
+        </article>
+      </div>
+      <div class="team rv">
+        <div class="team__card">
+          <p class="kicker">Who you deal with</p>
+          <h2>You talk to the people who build it.</h2>
+          <p>We are a small team in Beirut and Montreal. We run our own ecommerce brands, so we spend our own money and live with our own numbers every morning. We build these systems for our companies first, then for clients here.</p>
+          <p>No account manager, no junior. The people who build your system run your audit, and they answer when something breaks at 9pm.</p>
+        </div>
+        <ul class="who__stats">
+          <li><b data-count="2">0</b><span>brands we run ourselves, on these systems</span></li>
+          <li><b data-count="7">0</b><span>days a week it runs without us</span></li>
+          <li><b data-count="3">0</b><span>weeks, at most, to version one</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">How it starts</p>
+        <h2 class="rv">Thirty minutes. <em>Then you decide.</em></h2>
+      </header>
+      <ol class="steps">
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-audit"/></svg><span class="steps__n">01</span><h3>Free audit</h3><p>Thirty minutes. We look at what you use, who does what by hand, and where your week goes.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-map"/></svg><span class="steps__n">02</span><h3>You keep the map</h3><p>One page: what to fix first, what it saves, what it costs. Yours either way.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-build"/></svg><span class="steps__n">03</span><h3>We build it</h3><p>Version one in two to three weeks, on your real data. You break it, we fix it while you watch.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-runs"/></svg><span class="steps__n">04</span><h3>It runs</h3><p>We keep it alive and add to it every month. Month to month, no long contract.</p></li>
+      </ol>
+      <div class="price rv">
+        <svg class="ill ill--band" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-cost"/></svg>
+        <div>
+          <h3>What it costs</h3>
+          <p>The audit is free and the map is yours. After that, one price to build and one to run it. No hourly billing.</p>
+        </div>
+        <a class="btn" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="faq" id="faq">
+    <div class="wrap faq__grid">
+      <header>
+        <p class="kicker rv">Before you ask</p>
+        <h2 class="rv">The questions <em>every owner asks.</em></h2>
+        <svg class="ill ill--faq rv" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-ask"/></svg>
+      </header>
+      <div class="rv">
+        <details><summary>Our data is a mess.</summary><div class="a"><p>Everybody starts there. Most of the first build is putting one number in one place and agreeing what it means. Clean nothing before we talk.</p></div></details>
+        <details><summary>Where does our data live?</summary><div class="a"><p>In your accounts. We read only, unless you ask us to write. We sign an NDA before the audit if you want one.</p></div></details>
+        <details><summary>Do we need someone technical?</summary><div class="a"><p>No. If your team uses WhatsApp, they can use this. Nobody logs into anything new.</p></div></details>
+        <details><summary>Does it work in Arabic?</summary><div class="a"><p>Yes. Arabic and English in the same conversation. Your staff write the way they already write.</p></div></details>
+        <details><summary>What if it gets something wrong?</summary><div class="a"><p>Every number shows its source. When it is not sure it says so, and it never messages a customer or supplier unless you set that rule.</p></div></details>
+        <details><summary>We are a small company.</summary><div class="a"><p>Good. Small companies feel the hours come back faster, because the owner does the collecting. Three people or sixty, it fits.</p></div></details>
+        <details><summary>How fast do we see something real?</summary><div class="a"><p>Two to three weeks to version one, running on your own data. Not a slide deck.</p></div></details>
+        <details><summary>What about power cuts and internet?</summary><div class="a"><p>It runs in the cloud and reaches you on WhatsApp, so it works while your office does not. If a system goes dark, it tells you instead of inventing numbers.</p></div></details>
+      </div>
+    </div>
+  </section>
+  <section class="plumb" id="plumb">
+    <div class="wrap plumb__grid">
+      <div>
+        <p class="kicker rv">Where the numbers come from</p>
+        <h2 class="rv">Keep your systems. <em>We read them.</em></h2>
+        <p class="lead rv">Nobody changes system for us. We start with whatever holds the truth today, even one Excel file only Rami understands.</p>
+        <ul class="chipset rv" aria-label="Systems we connect">
+          <li>WhatsApp Business</li><li>Excel and Google Sheets</li><li>Shopify</li><li>WooCommerce</li><li>Odoo</li><li>QuickBooks</li><li>POS exports</li><li>Meta Ads</li><li>Gmail and Outlook</li><li>Bank statements (PDF)</li><li>Delivery companies</li><li>Your own database</li>
+        </ul>
+        <p class="note rv">A file, a login, or a PDF. We can usually read it.</p>
+      </div>
+      <figure class="flow rv" aria-label="Diagram: your systems feed Sanad, Sanad sends the brief and does the work">
+        <svg viewBox="0 0 520 420" role="img">
+          <title>Your systems feed Sanad. Sanad sends the brief and does the repetitive work.</title>
+          <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F0B25A" stop-opacity=".1"/><stop offset="1" stop-color="#54E6C1" stop-opacity=".85"/></linearGradient></defs>
+          <g class="flow__src" font-family="JetBrains Mono, monospace" font-size="12.5">
+            <g><rect x="6" y="24" width="150" height="38" rx="12"/><text x="24" y="48">POS &amp; sales</text></g>
+            <g><rect x="6" y="90" width="150" height="38" rx="12"/><text x="24" y="114">Sheets</text></g>
+            <g><rect x="6" y="156" width="150" height="38" rx="12"/><text x="24" y="180">Invoices</text></g>
+            <g><rect x="6" y="222" width="150" height="38" rx="12"/><text x="24" y="246">Stock</text></g>
+            <g><rect x="6" y="288" width="150" height="38" rx="12"/><text x="24" y="312">Ads &amp; site</text></g>
+            <g><rect x="6" y="354" width="150" height="38" rx="12"/><text x="24" y="378">WhatsApp</text></g>
+          </g>
+          <g class="flow__wire" fill="none" stroke="url(#fg)" stroke-width="2">
+            <path d="M156 43 C 230 43 230 210 268 210"/><path d="M156 109 C 230 109 230 210 268 210"/><path d="M156 175 C 230 175 230 210 268 210"/>
+            <path d="M156 241 C 230 241 230 210 268 210"/><path d="M156 307 C 230 307 230 210 268 210"/><path d="M156 373 C 230 373 230 210 268 210"/>
+          </g>
+          <g class="flow__core">
+            <circle cx="320" cy="210" r="54"/><circle class="flow__ring" cx="320" cy="210" r="54"/>
+            <path d="M296 222c12 10 36 10 48 0" stroke="#15C7A4" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M296 198c12-10 36-10 48 0" stroke="#F0B25A" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="flow__out" font-family="JetBrains Mono, monospace" font-size="12.5">
+            <path d="M374 210 H 430" stroke="#15C7A4" stroke-width="2" fill="none"/>
+            <g><rect x="380" y="96" width="134" height="56" rx="14"/><text x="398" y="122">7am brief</text><text x="398" y="140" class="sm">every day</text></g>
+            <g><rect x="380" y="182" width="134" height="56" rx="14"/><text x="398" y="208">Answers</text><text x="398" y="226" class="sm">when you ask</text></g>
+            <g><rect x="380" y="268" width="134" height="56" rx="14"/><text x="398" y="294">Tasks done</text><text x="398" y="312" class="sm">on a schedule</text></g>
+            <path d="M374 210 C 400 210 400 124 380 124" stroke="#15C7A4" stroke-width="2" fill="none" opacity=".55"/>
+            <path d="M374 210 C 400 210 400 296 380 296" stroke="#15C7A4" stroke-width="2" fill="none" opacity=".55"/>
+          </g>
+        </svg>
+        <figcaption>We read with read access wherever the system allows it. Nothing leaves your accounts unless you say so.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="audit" id="audit">
+    <div class="wrap audit__grid">
+      <div class="audit__copy rv">
+        <p class="kicker">The free audit</p>
+        <h2>Run a business in Lebanon? <em>Bring one thing that eats your week.</em></h2>
+        <p class="lead">Thirty minutes, on a call or at your office. You leave with one page: what to fix first, what it saves, what it costs. Keep it and walk away if you want.</p>
+        <a class="btn btn--wa btn--big" data-wa href="#form">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 12.6c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.6 7.6 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Book it on WhatsApp
+        </a>
+        <p class="note"><b>We build these ourselves. Three at a time.</b> If this month is full, we will tell you on the call. Beirut hours, same day answer.</p>
+      </div>
+
+      <form class="form rv" id="form" name="audit" method="POST" data-netlify="true" netlify-honeypot="website">
+        <input type="hidden" name="form-name" value="audit">
+        <input type="hidden" name="business" id="fBusiness" value="dist">
+        <p class="form__hp"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>
+        <h3>Or leave your details</h3>
+        <label class="field"><span>Your name</span><input name="name" required autocomplete="name"></label>
+        <label class="field"><span>Company</span><input name="company" required autocomplete="organization"></label>
+        <label class="field"><span>WhatsApp number</span><input name="whatsapp" required inputmode="tel" placeholder="+961 …" autocomplete="tel"></label>
+        <label class="field"><span>What eats your week?</span><textarea name="pain" rows="3" placeholder="Daily sales report, chasing invoices, stock, answering the same customer questions…"></textarea></label>
+        <button class="btn btn--block" type="submit">Send it <span class="arr" aria-hidden="true">→</span></button>
+        <p class="form__note" id="formNote">It goes straight to our team. No newsletter, no sales sequence.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+      <span class="brand__name">Sanad<em>سند</em></span>
+    </a>
+    <p class="foot__line">Strategic intelligence for companies in Lebanon.</p>
+    <p class="foot__links"><a data-wa href="#audit">WhatsApp</a><a href="mailto:hello@example.com">Email</a><a href="#faq">Questions</a></p>
+  </div>
+</footer>
+
+<aside class="sticky" id="sticky" aria-label="Book the free audit">
+  <span class="sticky__txt"><b>Free 30 minute audit</b><span>You keep the map either way</span></span>
+  <a class="btn btn--sm" data-wa href="#audit">Book it <span class="arr" aria-hidden="true">→</span></a>
+</aside>
+
+<script src="app2.js" defer></script>
+</body>
+</html>

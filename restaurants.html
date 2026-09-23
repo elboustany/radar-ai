@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanad · Busy every night. So where is the money?</title>
+<meta name="description" content="Your POS counts sales. Sanad finds profit: per dish, per shift, per branch. Ask it anything in Arabic or English. Built for restaurants and cafés in Lebanon. Free 30 minute audit.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Busy every night. So where is the money?">
+<meta property="og:description" content="Your POS, your supplier invoices, your rota and your delivery apps, read every night and explained at 7am. Built for restaurants and cafés in Lebanon.">
+<meta property="og:image" content="img/share-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B2333'/%3E%3Cpath d='M18 40c6 6 22 6 28 0' stroke='%2315C7A4' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M18 26c6-6 22-6 28 0' stroke='%23F0B25A' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="resto.css">
+</head>
+<body>
+
+<!-- illustration sprite. Drawn here, used with <svg class="ill"><use href="#i-..."/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-audit" viewBox="0 0 132 96">
+      <rect x="10" y="12" width="60" height="72" rx="8" fill="#EAF2F7"/>
+      <rect x="18" y="4" width="44" height="14" rx="7" fill="#0B2333"/>
+      <path d="M22 34h30M22 46h36M22 58h22" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M22 70h14" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <circle cx="92" cy="44" r="24" fill="#fff" stroke="#0E9E86" stroke-width="4.5"/>
+      <path d="M82 45l7 7 14-16" stroke="#0E9E86" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M109 62l14 16" stroke="#0B2333" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="30" cy="88" r="4" fill="#D9880F"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 132 96">
+      <path d="M8 24l36-14 44 14 36-14v62l-36 14-44-14-36 14z" fill="#EAF2F7"/>
+      <path d="M44 10v62M88 24v62" stroke="#CBDDE7" stroke-width="3"/>
+      <path d="M24 62c14-4 16-22 32-22s18 16 34 10" stroke="#0E9E86" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-dasharray="1 10"/>
+      <path d="M24 62c0-6 4-10 4-10" stroke="#0E9E86" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="24" cy="62" r="7" fill="#0B2333"/>
+      <path d="M90 50c6 0 11 5 11 11 0 8-11 17-11 17s-11-9-11-17c0-6 5-11 11-11z" fill="#D9880F"/>
+      <circle cx="90" cy="61" r="4" fill="#fff"/>
+    </symbol>
+    <symbol id="i-build" viewBox="0 0 132 96">
+      <rect x="44" y="30" width="44" height="36" rx="9" fill="#0B2333"/>
+      <path d="M56 42h20M56 54h12" stroke="#15C7A4" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M44 48H24V20h16M88 48h20V20H92M44 60H24v20h16M88 60h20v20H92" stroke="#CBDDE7" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <rect x="6" y="10" width="22" height="20" rx="6" fill="#DFF3EE" stroke="#0E9E86" stroke-width="3"/>
+      <rect x="104" y="10" width="22" height="20" rx="6" fill="#FBEEDA" stroke="#D9880F" stroke-width="3"/>
+      <rect x="6" y="70" width="22" height="20" rx="6" fill="#FBEEDA" stroke="#D9880F" stroke-width="3"/>
+      <rect x="104" y="70" width="22" height="20" rx="6" fill="#DFF3EE" stroke="#0E9E86" stroke-width="3"/>
+      <circle cx="66" cy="12" r="6" fill="#D9880F"/>
+      <path d="M66 18v12" stroke="#CBDDE7" stroke-width="3.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-runs" viewBox="0 0 132 96">
+      <rect x="34" y="6" width="64" height="84" rx="12" fill="#EAF2F7" stroke="#CBDDE7" stroke-width="3"/>
+      <rect x="34" y="6" width="64" height="22" rx="12" fill="#0B2333"/>
+      <rect x="56" y="14" width="20" height="5" rx="2.5" fill="#15C7A4"/>
+      <rect x="42" y="36" width="42" height="16" rx="8" fill="#fff" stroke="#CBDDE7" stroke-width="2.6"/>
+      <path d="M50 44h22" stroke="#7D97A6" stroke-width="3" stroke-linecap="round"/>
+      <rect x="52" y="58" width="38" height="16" rx="8" fill="#DFF3EE"/>
+      <path d="M60 66h20" stroke="#0E9E86" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="20" cy="58" r="16" fill="#fff" stroke="#D9880F" stroke-width="4"/>
+      <path d="M20 49v9l6 4" stroke="#D9880F" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M104 62l6-12 6 20 6-28 6 20" stroke="#0E9E86" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-ask" viewBox="0 0 132 96">
+      <path d="M14 14h72a10 10 0 0110 10v30a10 10 0 01-10 10H44L26 78V64H14A10 10 0 014 54V24a10 10 0 0110-10z" fill="#EAF2F7"/>
+      <path d="M36 32c0-7 6-11 13-11s13 4 13 11c0 8-11 8-13 15" stroke="#0B2333" stroke-width="4.4" fill="none" stroke-linecap="round"/>
+      <circle cx="49" cy="55" r="3.6" fill="#D9880F"/>
+      <path d="M84 40h30a8 8 0 018 8v20a8 8 0 01-8 8h-4v10l-12-10H84a8 8 0 01-8-8V48a8 8 0 018-8z" fill="#0B2333"/>
+      <path d="M90 56h22M90 66h14" stroke="#15C7A4" stroke-width="3.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cost" viewBox="0 0 132 96">
+      <path d="M22 8h54a6 6 0 016 6v74l-11-7-11 7-11-7-11 7-11-7-11 7V14a6 6 0 016-6z" fill="#fff" stroke="#CBDDE7" stroke-width="3.4"/>
+      <path d="M32 30h34M32 42h24" stroke="#7D97A6" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M32 58h20" stroke="#0E9E86" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="96" cy="56" r="26" fill="#FBEEDA" stroke="#D9880F" stroke-width="4"/>
+      <path d="M96 40v32M104 47c-2-4-6-5-9-5-5 0-8 3-8 7 0 9 17 5 17 14 0 4-4 7-9 7-4 0-8-2-10-5" stroke="#D9880F" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-read" viewBox="0 0 64 64">
+      <rect x="10" y="8" width="34" height="48" rx="6" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M18 20h18M18 30h18M18 40h10" stroke="#8FB2C4" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="44" cy="40" r="12" fill="#0B2333" stroke="#15C7A4" stroke-width="3"/>
+      <path d="M38 40h12M44 34v12" stroke="#15C7A4" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-match" viewBox="0 0 64 64">
+      <rect x="6" y="14" width="22" height="34" rx="5" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <rect x="36" y="14" width="22" height="34" rx="5" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M12 24h10M12 32h8M42 24h10M42 32h8" stroke="#8FB2C4" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="32" cy="42" r="11" fill="#0B2333" stroke="#F0B25A" stroke-width="3"/>
+      <path d="M27 42l4 4 7-8" stroke="#F0B25A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-price" viewBox="0 0 64 64">
+      <path d="M34 6H14a8 8 0 0 0-8 8v20l26 26 24-24z" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.6" stroke-linejoin="round"/>
+      <circle cx="20" cy="20" r="4.5" fill="#15C7A4"/>
+      <path d="M44 46l10-10M48 34h8v8" stroke="#F0B25A" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-hunt" viewBox="0 0 64 64">
+      <circle cx="28" cy="28" r="19" fill="rgba(255,255,255,.06)" stroke="#8FB2C4" stroke-width="2.6"/>
+      <path d="M28 9v19l13 8" stroke="#15C7A4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="28" cy="28" r="7" fill="none" stroke="#15C7A4" stroke-width="2.2" opacity=".6"/>
+      <path d="M43 43l13 13" stroke="#F0B25A" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-n-pen" viewBox="0 0 64 64">
+      <path d="M8 12h36a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H24L12 52V42H8a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6z" transform="translate(4,0)" fill="rgba(255,255,255,.07)" stroke="#8FB2C4" stroke-width="2.4"/>
+      <path d="M18 24h20M18 32h12" stroke="#8FB2C4" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M40 44l14-14 6 6-14 14-8 2z" fill="#0B2333" stroke="#F0B25A" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-n-sun" viewBox="0 0 64 64">
+      <path d="M6 44h52" stroke="#8FB2C4" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M16 44a16 16 0 0 1 32 0z" fill="rgba(240,178,90,.22)" stroke="#F0B25A" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M32 10v7M12 20l5 5M52 20l-5 5" stroke="#F0B25A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M18 54h10M34 54h12" stroke="#15C7A4" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+      <span class="brand__name">Sanad<em>سند</em></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#demo">See it work</a>
+      <a href="#night">While you sleep</a>
+      <a href="#matrix">Your menu</a>
+      <a href="#numbers">The numbers</a>
+      <a href="#pricing">Price</a>
+      <a href="index.html">Other businesses</a>
+    </nav>
+    <a class="btn btn--sm" data-wa href="#audit">Book the free audit</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="kicker rv">For restaurants &amp; cafés in Lebanon</p>
+        <h1 class="rv">Busy every night. <em>So where is the money?</em></h1>
+        <p class="lead rv">Your POS counts sales. Our intelligence finds profit: per dish, per shift, per branch. Ask it anything, any hour, in Arabic or English.</p>
+        <div class="cta-row rv">
+          <a class="btn" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a>
+          <a class="tlink" href="#demo">Watch it work</a>
+        </div>
+        <ul class="ticks rv">
+          <li>Answers you in 5 seconds</li>
+          <li>Arabic or English</li>
+          <li>Works with your POS</li>
+          <li>Running in 2 weeks</li>
+        </ul>
+
+        <div class="pick rv" id="pick">
+          <p class="pick__lab">Pick your kind of place. Everything on this page changes.</p>
+          <div class="pick__row" role="tablist" aria-label="Kind of venue">
+            <button class="pick__btn is-on" role="tab" data-ind="full" aria-selected="true">Restaurant</button>
+            <button class="pick__btn" role="tab" data-ind="cafe" aria-selected="false">Café &amp; bakery</button>
+            <button class="pick__btn" role="tab" data-ind="deliv" aria-selected="false">Delivery kitchen</button>
+            <button class="pick__btn" role="tab" data-ind="group" aria-selected="false">Multi-branch group</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHONE DEMO -->
+      <div class="hero__demo rv" id="demo">
+        <div class="phone">
+          <div class="phone__notch" aria-hidden="true"></div>
+          <div class="phone__bar">
+            <span class="phone__who">
+              <span class="phone__av" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+              <span><b>Sanad</b><i id="demoWho">online · Beit Warde, 90 seats</i></span>
+            </span>
+            <span class="lang" role="group" aria-label="Language">
+              <button type="button" class="lang__btn is-on" data-lang="en">EN</button>
+              <button type="button" class="lang__btn" data-lang="ar">ع</button>
+            </span>
+          </div>
+          <div class="thread" id="thread" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <p class="demo__note">Sample numbers. Tap a question. Switch it to Arabic. The thinking is real.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pain" id="pain">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Sound familiar</p>
+        <h2 class="rv">Sales are up. <em>The bank says otherwise.</em></h2>
+      </header>
+      <div class="pain__grid">
+        <figure class="pain__photo rv">
+          <img src="img/r-night.webp" alt="A restaurant owner alone in his closed restaurant late at night counting receipts" width="900" height="1125" loading="lazy">
+          <figcaption class="pain__stamp"><i>01:20, chairs already up</i>The answers already exist tonight. They sit in your POS, a pile of delivery notes, and three people’s heads.</figcaption>
+        </figure>
+        <div>
+      <ol class="day">
+        <li class="rv"><span class="day__t">07:30</span><h3>The delivery arrives before you</h3><p>Nobody weighs it. The price on the note is not the price you agreed.</p></li>
+        <li class="rv"><span class="day__t">13:10</span><h3>You guess the prep</h3><p>40 taouk or 60? Too few, you turn tables away. Too many, you bin it.</p></li>
+        <li class="rv"><span class="day__t">20:45</span><h3>Three tablets, three commissions</h3><p>You know the sales on each. Not one tells you what you kept.</p></li>
+        <li class="rv"><span class="day__t">01:20</span><h3>You count the drawer</h3><p>Till, app and safe all say something different. You are tired. You let it go.</p></li>
+      </ol>
+      <p class="pain__foot rv">Nobody is stealing from you. At 1:20am there is simply nobody left to check.</p>
+        </div>
+      </div>
+      <div class="painstrip rv">
+        <figure><img src="img/r-supplier.webp" alt="A chef checking a delivery note at the back door in the early morning" width="900" height="600" loading="lazy"><figcaption>The invoice nobody checks</figcaption></figure>
+        <figure><img src="img/r-prep.webp" alt="Two chefs weighing portions on a digital scale at a prep table" width="900" height="600" loading="lazy"><figcaption>The portion nobody weighs</figcaption></figure>
+        <figure><img src="img/r-delivery.webp" alt="Three delivery app tablets on a restaurant pass" width="900" height="600" loading="lazy"><figcaption>The commission nobody counts</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHILE YOU SLEEP -->
+  <section class="night" id="night">
+    <div class="wrap">
+      <header class="head head--on">
+        <p class="kicker rv">While you sleep</p>
+        <h2 class="rv">You go home at 1am. <em>It starts work at 1am.</em></h2>
+        <p class="lead rv">Six jobs nobody in your restaurant has time for. Your intelligence officer does them all before the bread arrives.</p>
+      </header>
+      <ol class="night__list">
+        <li class="rv" style="--i:0">
+          <span class="night__t">23:40</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-read"/></svg></span>
+          <div><h3>It reads tonight</h3><p>Every ticket, against the kitchen screen. 14 orders took over 17 minutes.</p></div>
+        </li>
+        <li class="rv" style="--i:1">
+          <span class="night__t">00:20</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-match"/></svg></span>
+          <div><h3>It checks the delivery apps</h3><p>Commission, promo, refunds. It found a 25% discount you never approved.</p></div>
+        </li>
+        <li class="rv" style="--i:2">
+          <span class="night__t">02:10</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-price"/></svg></span>
+          <div><h3>It re-costs your menu</h3><p>Tonight’s invoices hit every recipe. 4 dishes just went under your margin.</p></div>
+        </li>
+        <li class="rv" style="--i:3">
+          <span class="night__t">04:30</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-hunt"/></svg></span>
+          <div><h3>It writes tomorrow’s prep</h3><p>60 taouk, not the 40 somebody guessed. Weather and history, minus your fridge.</p></div>
+        </li>
+        <li class="rv" style="--i:4">
+          <span class="night__t">06:40</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-pen"/></svg></span>
+          <div><h3>It writes your messages</h3><p>Supplier, late payer, Saturday schedule. Ready to send. You press send.</p></div>
+        </li>
+        <li class="rv" style="--i:5">
+          <span class="night__t">07:00</span>
+          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-sun"/></svg></span>
+          <div><h3>It wakes you with 3 decisions</h3><p>Not 30 numbers. Three moves, with the money on each one.</p></div>
+        </li>
+      </ol>
+      <p class="night__foot rv">Your chef fills in nothing. You log into nothing. It simply works the night shift.</p>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="screens" id="screens">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">What it hands you at 07:00</p>
+        <h2 class="rv">Ask your intelligence officer. <em>Answer in 5 seconds.</em></h2>
+        <p class="lead rv">Your strategic intelligence officer, on duty at 3am. No training, no new app. You type like you type to your manager, and it answers from last night’s tickets.</p>
+      </header>
+
+      <div class="app rv" id="app">
+        <div class="app__bar">
+          <span class="app__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div class="app__tabs" role="tablist" aria-label="Screens">
+            <button class="app__tab is-on" role="tab" data-tab="board" aria-selected="true">Daily board</button>
+            <button class="app__tab" role="tab" data-tab="ask" aria-selected="false">Ask anything</button>
+            <button class="app__tab" role="tab" data-tab="alerts" aria-selected="false">Alerts</button>
+            <button class="app__tab" role="tab" data-tab="report" aria-selected="false">Weekly report</button>
+          </div>
+          <span class="app__live"><i></i>sample data</span>
+        </div>
+
+        <!-- TAB: daily board -->
+        <div class="pane is-on" id="pane-board" role="tabpanel">
+          <div class="kpis">
+            <div class="kpi"><span>Profit after everything</span><b>$0</b><i class="up">last night</i><svg class="spark"></svg></div>
+            <div class="kpi"><span>Prime cost, rolling 7 days</span><b>0%</b><i class="down">food + labour</i><svg class="spark"></svg></div>
+            <div class="kpi"><span>Average check</span><b>$0</b><i class="down">against last month</i><svg class="spark"></svg></div>
+            <div class="kpi"><span>Covers against forecast</span><b>0</b><i class="up">last night</i><svg class="spark"></svg></div>
+          </div>
+          <div class="board">
+            <figure class="panel panel--line">
+              <figcaption><b>Sales, last 30 days</b><span class="legend"><i class="l-mint"></i>this month<i class="l-dim"></i>last month</span></figcaption>
+              <svg class="chart" id="chartLine" viewBox="0 0 640 240" preserveAspectRatio="none" role="img" aria-label="Revenue line chart, this month against last month"></svg>
+            </figure>
+            <figure class="panel panel--gauge">
+              <figcaption><b>Prime cost, rolling 7 days</b><span class="legend"><i class="l-mint"></i>food<i class="l-amber"></i>labour</span></figcaption>
+              <svg class="chart" id="chartGauge" viewBox="0 0 320 210" role="img" aria-label="Prime cost gauge, food plus labour against target"></svg>
+              <p class="panel__note">The one number that decides whether a restaurant lives. Most owners see it once a quarter.</p>
+            </figure>
+            <figure class="panel">
+              <figcaption><b>Profit by daypart</b></figcaption>
+              <svg class="chart" id="chartBars" viewBox="0 0 320 240" role="img" aria-label="Profit by daypart bar chart"></svg>
+            </figure>
+            <figure class="panel panel--wide">
+              <figcaption><b>Covers by daypart, this week</b><ul class="dkey" id="daypartKey"></ul></figcaption>
+              <svg class="chart" id="chartDaypart" viewBox="0 0 420 220" role="img" aria-label="Covers by daypart, stacked by service"></svg>
+            </figure>
+            <figure class="panel">
+              <figcaption><b>What moved food cost</b><span class="legend">points</span></figcaption>
+              <svg class="chart" id="chartBridge" viewBox="0 0 320 240" role="img" aria-label="Margin bridge, what moved the margin"></svg>
+            </figure>
+            <figure class="panel panel--donut">
+              <figcaption><b>Where the money goes</b></figcaption>
+              <svg class="chart" id="chartDonut" viewBox="0 0 220 220" role="img" aria-label="Cost breakdown donut chart"></svg>
+              <ul class="donut__key" id="donutKey"></ul>
+            </figure>
+            <figure class="panel">
+              <figcaption><b>Money leaking</b><span class="tag tag--warn">$2,350 a month</span></figcaption>
+              <ul class="risk" id="riskList"></ul>
+            </figure>
+          </div>
+        </div>
+
+        <!-- TAB: ask -->
+        <div class="pane" id="pane-ask" role="tabpanel">
+          <div class="ask">
+            <div class="ask__bar"><span class="ask__caret">&gt;</span><span id="askText"></span><span class="ask__cursor" aria-hidden="true"></span></div>
+            <div class="ask__body" id="askBody"></div>
+            <div class="ask__row" id="askRow"></div>
+          </div>
+        </div>
+
+        <!-- TAB: alerts -->
+        <div class="pane" id="pane-alerts" role="tabpanel">
+          <ul class="alerts" id="alerts"></ul>
+          <p class="pane__note">It only interrupts you when a rule you set gets crossed. Everything else waits for the morning brief.</p>
+        </div>
+
+        <!-- TAB: weekly report -->
+        <div class="pane" id="pane-report" role="tabpanel">
+          <div class="report">
+            <div class="report__head">
+              <div><span class="report__kick">Weekly report · sent Monday 08:00</span><h3>Week 38 · full service restaurant</h3></div>
+              <span class="tag">to you + your head chef</span>
+            </div>
+            <div class="report__grid">
+              <figure class="panel">
+                <figcaption><b>Sales by day</b></figcaption>
+                <svg class="chart" id="chartWeek" viewBox="0 0 420 200" role="img" aria-label="Sales by day of week"></svg>
+              </figure>
+              <ul class="report__points"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note rv">Every build starts here and goes wherever your week hurts most. If your problem is not on this list, it is probably still the same build.</p>
+    </div>
+  </section>
+
+  <!-- MENU MATRIX -->
+  <section class="matrix" id="matrix">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Your menu, on one chart</p>
+        <h2 class="rv">Which dish makes you money? <em>Most owners guess wrong.</em></h2>
+        <p class="lead rv">Chefs argue about dishes. Owners argue about prices. This settles both: every item placed by how often it sells and what it actually keeps after cost. Click any dish. It is sample data, and your version runs on last night's tickets.</p>
+      </header>
+      <div class="matrix__grid rv">
+        <figure class="panel panel--matrix">
+          <figcaption><b>Menu engineering</b><ul class="dkey" id="menuKey"></ul></figcaption>
+          <div class="matrix__scroll">
+            <svg class="chart" id="chartMenu" viewBox="0 0 620 420" role="img" aria-label="Menu engineering matrix: dishes by popularity and profit per plate"></svg>
+          </div>
+          <p class="panel__hint">Drag the chart sideways to read it</p>
+          <p class="panel__note">Bubble size is the profit that dish brings you in a week. Dashed lines are your own medians, not an industry benchmark.</p>
+        </figure>
+        <div class="matrix__side">
+          <div class="dish" id="dishCard"></div>
+          <div class="moves">
+            <h3>Three moves worth making this week</h3>
+            <ol id="menuMoves"></ol>
+            <p class="moves__note">It recalculates the moment a supplier price or a week of sales changes, so the menu stops being a decision you make once a year.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="who-for" id="who">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Who we build for</p>
+        <h2 class="rv">One kitchen or four branches. <em>Same leaks.</em></h2>
+        <p class="lead rv">Click the one that looks like you. The first four change this whole page.</p>
+      </header>
+      <div class="whogrid">
+        <button class="whocard rv" data-ind="full">
+          <span class="whocard__img"><img src="img/r-fine.webp" alt="A waiter serving a table in a full service restaurant dining room" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Full service restaurants</b>
+          <span class="whocard__pain">Food cost drifts for six weeks. The accounts tell you after it is too late.</span>
+          <span class="whocard__caps"><i>Prime cost every morning</i><i>Portion drift by station</i><i>Profit per dish, live</i><i>Tomorrow’s covers and prep</i><i>Supplier price alerts</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="cafe">
+          <span class="whocard__img"><img src="img/r-cafe.webp" alt="A barista pulling an espresso shot at a specialty coffee counter" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Cafés &amp; coffee shops</b>
+          <span class="whocard__pain">You feel the morning rush. You cannot prove what the queue costs you.</span>
+          <span class="whocard__caps"><i>Customers lost by hour</i><i>Real cost per cup</i><i>Waste against the sales curve</i><i>Regulars who went quiet</i><i>Bake to the curve</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="deliv">
+          <span class="whocard__img"><img src="img/r-cloud.webp" alt="Cooks packing takeaway boxes into delivery bags in a delivery kitchen" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Delivery &amp; cloud kitchens</b>
+          <span class="whocard__pain">Three platforms, three commissions. Nobody tells you what you kept.</span>
+          <span class="whocard__caps"><i>Money kept per order</i><i>Platform against platform</i><i>Prep time against rating</i><i>Items to delist</i><i>Promos you never approved</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <button class="whocard rv" data-ind="group">
+          <span class="whocard__img"><img src="img/r-group.webp" alt="A manager checking a tablet in a busy restaurant dining room" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Multi-branch groups</b>
+          <span class="whocard__pain">Same menu, same suppliers. One branch runs five points more expensive.</span>
+          <span class="whocard__caps"><i>Branch against branch</i><i>Where the gap comes from</i><i>Voids and comps by till</i><i>Central kitchen load</i><i>Manager scorecards</i></span>
+          <span class="whocard__go">See the demo →</span>
+          </span>
+        </button>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/r-bakery.webp" alt="A baker sliding a tray of pastries into a display case" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Bakeries &amp; patisseries</b>
+          <span class="whocard__pain">You bake the same number daily and bin what the afternoon did not want.</span>
+          <span class="whocard__caps"><i>How much to bake, by hour</i><i>Waste by tray</i><i>Live ingredient cost</i><i>Tomorrow’s order to the mill</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/r-fast.webp" alt="A counter server handing a paper bag across the counter at a fast casual restaurant" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Fast casual &amp; counter service</b>
+          <span class="whocard__pain">Speed is the product. Nobody measures where the queue breaks.</span>
+          <span class="whocard__caps"><i>Service time by hour</i><i>Customers lost to the queue</i><i>Combo margin</i><i>Staff that follow the rush</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/r-hotel.webp" alt="A supervisor checking the buffet line in a hotel breakfast restaurant" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Hotel F&amp;B &amp; banqueting</b>
+          <span class="whocard__pain">Breakfast, room service, banquets and bar all report separately.</span>
+          <span class="whocard__caps"><i>One P&amp;L across outlets</i><i>Cost per cover by outlet</i><i>Event profit after staff</i><i>Breakfast waste</i></span>
+          
+          </span>
+        </div>
+        <div class="whocard rv">
+          <span class="whocard__img"><img src="img/r-bar.webp" alt="A bartender making a cocktail behind a wooden bar at night" width="720" height="450" loading="lazy"></span>
+          <span class="whocard__body">
+          <b>Bars &amp; bistros</b>
+          <span class="whocard__pain">Pour cost is a guess. The late shift is where guessing gets expensive.</span>
+          <span class="whocard__caps"><i>Pour cost by bottle</i><i>Voids by shift</i><i>What the late hours earn</i><i>Stock count against the till</i></span>
+          
+          </span>
+        </div>
+      </div>
+      <p class="note rv">Not on the list? If your week ends with you rebuilding numbers from receipts, it is the same build.</p>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS -->
+  <section class="numbers" id="numbers">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Do it yourself, right here</p>
+        <h2 class="rv">Two numbers decide your year. <em>Check yours now.</em></h2>
+        <p class="lead rv">Move the sliders. No industry averages, just your own maths.</p>
+      </header>
+
+      <div class="numbers__grid">
+        <div class="calc calc--stack rv">
+          <div class="calc__inputs">
+            <h3 class="calc__title">1 · Prime cost</h3>
+            <p class="calc__sub">Food plus labour as a share of sales. Under 60% and a restaurant breathes. Over 65% and it does not matter how busy you look.</p>
+            <label class="slider">
+              <span class="slider__top"><i>Sales a month</i><b id="vSales">$45,000</b></span>
+              <input type="range" id="pSales" min="5000" max="200000" step="1000" value="45000">
+              <span class="slider__scale"><i>$5k</i><i>$200k</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Food cost</i><b id="vFood">32%</b></span>
+              <input type="range" id="pFood" min="15" max="50" step="0.5" value="32">
+              <span class="slider__scale"><i>15%</i><i>50%</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Labour, everybody, fully loaded</i><b id="vLab">32%</b></span>
+              <input type="range" id="pLab" min="10" max="50" step="0.5" value="32">
+              <span class="slider__scale"><i>10%</i><i>50%</i></span>
+            </label>
+            <p class="calc__honest">Most owners know these two within a point or two. The problem is that they know them in March, for January.</p>
+          </div>
+          <div class="calc__out">
+            <figure class="panel panel--gauge">
+              <figcaption><b>Where you sit</b></figcaption>
+              <svg class="chart" id="chartPrime" viewBox="0 0 320 210" role="img" aria-label="Prime cost gauge"></svg>
+            </figure>
+            <div class="calc__big">
+              <div><span>Your prime cost</span><b id="oPrime">0%</b></div>
+              <div><span>Two points is worth</span><b id="oTwo">$0</b><i>a year</i></div>
+            </div>
+            <figure class="panel panel--bars">
+              <figcaption><b>Every hundred dollars you take</b></figcaption>
+              <svg class="chart" id="chartPrimeBars" viewBox="0 0 420 170" role="img" aria-label="Food, labour and what is left per hundred dollars"></svg>
+            </figure>
+            <p class="calc__note" id="primeNote"></p>
+          </div>
+        </div>
+
+        <div class="calc calc--stack rv">
+          <div class="calc__inputs">
+            <h3 class="calc__title">2 · One delivery order</h3>
+            <p class="calc__sub">The platform shows you sales. This shows you what lands in your account once the commission, the box and the promo have taken their cut.</p>
+            <label class="slider">
+              <span class="slider__top"><i>Order value</i><b id="vVal">$24</b></span>
+              <input type="range" id="dVal" min="6" max="80" step="1" value="24">
+              <span class="slider__scale"><i>$6</i><i>$80</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Platform commission</i><b id="vCom">24%</b></span>
+              <input type="range" id="dCom" min="0" max="35" step="1" value="24">
+              <span class="slider__scale"><i>0%</i><i>35%</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Food cost on that order</i><b id="vFc">30%</b></span>
+              <input type="range" id="dFood" min="15" max="50" step="1" value="30">
+              <span class="slider__scale"><i>15%</i><i>50%</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Packaging</i><b id="vPack">$1.40</b></span>
+              <input type="range" id="dPack" min="0" max="5" step="0.1" value="1.4">
+              <span class="slider__scale"><i>$0</i><i>$5</i></span>
+            </label>
+            <label class="slider">
+              <span class="slider__top"><i>Your share of promos and discounts</i><b id="vPromo">9%</b></span>
+              <input type="range" id="dPromo" min="0" max="30" step="1" value="9">
+              <span class="slider__scale"><i>0%</i><i>30%</i></span>
+            </label>
+          </div>
+          <div class="calc__out">
+            <figure class="panel panel--bars">
+              <figcaption><b>Listed price, followed to your bank</b></figcaption>
+              <svg class="chart" id="chartDeliv" viewBox="0 0 420 230" role="img" aria-label="What is left of a delivery order after every deduction"></svg>
+            </figure>
+            <div class="calc__big">
+              <div><span>You keep, delivery</span><b id="oKeep">$0</b></div>
+              <div><span>Same order in the room</span><b id="oDine">$0</b></div>
+            </div>
+            <p class="calc__note" id="delivNote"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="beyond rv">
+        <h3>And these you cannot even calculate.</h3>
+        <ul>
+          <li><b>The prep you guessed.</b> Running out at 9pm costs covers you never see. Over-prepping fills Sunday’s bin.</li>
+          <li><b>The price rise nobody signed.</b> Three percent on meat, nine on milk. It never appears as a line in your accounts.</li>
+          <li><b>The shift that was one short.</b> Saving a server on Saturday costs more in check average than the wage saved.</li>
+          <li><b>The dish that eats the pass.</b> Two or three items take a station hostage during service for four covers a week.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="maths" id="maths">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">The maths</p>
+        <h2 class="rv">And the hours <em>you spend counting.</em></h2>
+        <p class="lead rv">Stock counts, sales sheets, three delivery apps, chasing invoices. Move the sliders.</p>
+      </header>
+
+      <div class="calc rv">
+        <div class="calc__inputs">
+          <label class="slider">
+            <span class="slider__top"><i>Hours a week you and your managers spend counting, reconciling and rebuilding numbers</i><b id="vHours">14h</b></span>
+            <input type="range" id="sHours" min="2" max="60" step="1" value="14">
+            <span class="slider__scale"><i>2h</i><i>60h</i></span>
+          </label>
+          <label class="slider">
+            <span class="slider__top"><i>What an hour of that time costs you, fully loaded</i><b id="vRate">$9</b></span>
+            <input type="range" id="sRate" min="3" max="40" step="1" value="9">
+            <span class="slider__scale"><i>$3</i><i>$40</i></span>
+          </label>
+          <label class="slider">
+            <span class="slider__top"><i>How much of it you believe a system can take off your hands</i><b id="vCut">60%</b></span>
+            <input type="range" id="sCut" min="20" max="90" step="5" value="60">
+            <span class="slider__scale"><i>20%</i><i>90%</i></span>
+          </label>
+          <p class="calc__honest">Nothing here is padded. Three inputs, simple multiplication, and you keep the assumption in your own hands.</p>
+        </div>
+
+        <div class="calc__out">
+          <div class="calc__big">
+            <div><span>Hours back, every month</span><b id="oHours">0</b></div>
+            <div><span>That is worth</span><b id="oMoney">$0</b><i>a year</i></div>
+          </div>
+          <figure class="panel panel--bars">
+            <figcaption><b>Your week, before and after</b></figcaption>
+            <svg class="chart" id="chartCalc" viewBox="0 0 420 150" role="img" aria-label="Hours per week before and after"></svg>
+          </figure>
+          <figure class="panel">
+            <figcaption><b>Twelve months of that saving</b><span class="legend"><i class="l-mint"></i>saved<i class="l-amber"></i>what a build usually costs</span></figcaption>
+            <svg class="chart" id="chartPay" viewBox="0 0 420 180" role="img" aria-label="Cumulative savings against build cost"></svg>
+          </figure>
+          <p class="calc__note" id="payNote"></p>
+        </div>
+      </div>
+
+      <div class="beyond rv">
+        <h3>And that is still only the hours.</h3>
+        <ul>
+          <li><b>The late discovery tax.</b> Portion drift found in week six instead of week one. Five weeks of a small leak usually costs more than the whole build.</li>
+          <li><b>The decision you delay.</b> Dropping a dish, repricing the taouk, taking the grill off a platform, changing Saturday's rota. Each one moves money the same night.</li>
+          <li><b>The manager you do not hire.</b> Most owners reach for another pair of hands to do the counting. This costs less and works at 07:00 on a Sunday.</li>
+          <li><b>The knowledge that stops walking out.</b> When your head chef leaves, the recipe costs, the prep curve and the supplier history stay.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLUMBING -->
+  <section class="plumb" id="plumb">
+    <div class="wrap plumb__grid">
+      <div>
+        <p class="kicker rv">Where the numbers come from</p>
+        <h2 class="rv">Keep your POS. <em>We read it.</em></h2>
+        <p class="lead rv">Nobody changes system for us. Old POS with no API is normal here, and we have a way in.</p>
+        <ul class="chipset rv" aria-label="Systems we connect">
+          <li>Your POS, whatever it is</li><li>POS exports and Z reports</li><li>Delivery platforms</li><li>Supplier invoices (PDF or photo)</li><li>Recipe and cost sheets</li><li>Staff schedule and payroll</li><li>Reservations</li><li>Stock counts</li><li>WhatsApp Business</li><li>Excel and Google Sheets</li><li>QuickBooks and Odoo</li><li>Bank statements</li>
+        </ul>
+        <p class="note rv">A file, a login, or a photo of a delivery note. We can usually read it.</p>
+      </div>
+      <figure class="flow rv" aria-label="Diagram: your systems feed Sanad, Sanad sends the brief and does the work">
+        <svg viewBox="0 0 520 420" role="img">
+          <title>Your systems feed Sanad. Sanad sends the brief and does the repetitive work.</title>
+          <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F0B25A" stop-opacity=".1"/><stop offset="1" stop-color="#54E6C1" stop-opacity=".85"/></linearGradient></defs>
+          <g class="flow__src" font-family="JetBrains Mono, monospace" font-size="12.5">
+            <g><rect x="6" y="24" width="150" height="38" rx="12"/><text x="24" y="48">POS tickets</text></g>
+            <g><rect x="6" y="90" width="150" height="38" rx="12"/><text x="24" y="114">Rota</text></g>
+            <g><rect x="6" y="156" width="150" height="38" rx="12"/><text x="24" y="180">Invoices</text></g>
+            <g><rect x="6" y="222" width="150" height="38" rx="12"/><text x="24" y="246">Stock counts</text></g>
+            <g><rect x="6" y="288" width="150" height="38" rx="12"/><text x="24" y="312">Delivery apps</text></g>
+            <g><rect x="6" y="354" width="150" height="38" rx="12"/><text x="24" y="378">WhatsApp</text></g>
+          </g>
+          <g class="flow__wire" fill="none" stroke="url(#fg)" stroke-width="2">
+            <path d="M156 43 C 230 43 230 210 268 210"/><path d="M156 109 C 230 109 230 210 268 210"/><path d="M156 175 C 230 175 230 210 268 210"/>
+            <path d="M156 241 C 230 241 230 210 268 210"/><path d="M156 307 C 230 307 230 210 268 210"/><path d="M156 373 C 230 373 230 210 268 210"/>
+          </g>
+          <g class="flow__core">
+            <circle cx="320" cy="210" r="54"/><circle class="flow__ring" cx="320" cy="210" r="54"/>
+            <path d="M296 222c12 10 36 10 48 0" stroke="#15C7A4" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M296 198c12-10 36-10 48 0" stroke="#F0B25A" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="flow__out" font-family="JetBrains Mono, monospace" font-size="12.5">
+            <path d="M374 210 H 430" stroke="#15C7A4" stroke-width="2" fill="none"/>
+            <g><rect x="380" y="96" width="134" height="56" rx="14"/><text x="398" y="122">7am brief</text><text x="398" y="140" class="sm">every day</text></g>
+            <g><rect x="380" y="182" width="134" height="56" rx="14"/><text x="398" y="208">Answers</text><text x="398" y="226" class="sm">when you ask</text></g>
+            <g><rect x="380" y="268" width="134" height="56" rx="14"/><text x="398" y="294">Chasing done</text><text x="398" y="312" class="sm">on a schedule</text></g>
+            <path d="M374 210 C 400 210 400 124 380 124" stroke="#15C7A4" stroke-width="2" fill="none" opacity=".55"/>
+            <path d="M374 210 C 400 210 400 296 380 296" stroke="#15C7A4" stroke-width="2" fill="none" opacity=".55"/>
+          </g>
+        </svg>
+        <figcaption>We read with read access wherever the system allows it. Nothing leaves your accounts unless you say so.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <!-- CLIENTS. Swap the six placeholder tiles for real brand names or logo images. -->
+  <section class="clients" id="proof">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Who we work with</p>
+        <h2 class="rv">Operators who count <em>every single dollar.</em></h2>
+        <p class="lead rv">Kitchens, cafés and delivery brands that already know their sales and want to know their profit.</p>
+      </header>
+      <ul class="logos rv">
+        <li class="logo"><span>Brand 01</span></li>
+        <li class="logo"><span>Brand 02</span></li>
+        <li class="logo"><span>Brand 03</span></li>
+        <li class="logo"><span>Brand 04</span></li>
+        <li class="logo"><span>Brand 05</span></li>
+        <li class="logo"><span>Brand 06</span></li>
+      </ul>
+      <div class="clients__row rv">
+        <div class="clients__card">
+          <svg class="ill ill--sm" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-build"/></svg>
+          <h3>We run these ourselves</h3>
+          <p>Our own companies run on the same system. We feel every mistake before you do.</p>
+        </div>
+        <div class="clients__card">
+          <svg class="ill ill--sm" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-runs"/></svg>
+          <h3>Live, not a demo</h3>
+          <p>These are systems running every morning in real companies, in Lebanon and outside it.</p>
+        </div>
+        <div class="clients__card">
+          <svg class="ill ill--sm" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-audit"/></svg>
+          <h3>Your data stays yours</h3>
+          <p>We read your accounts. We do not move your data anywhere, and we sign an NDA before the audit.</p>
+        </div>
+      </div>
+      <p class="note rv">The people who run your audit are the people who build your system.</p>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">How it starts</p>
+        <h2 class="rv">Thirty minutes. <em>Then you decide.</em></h2>
+      </header>
+      <ol class="steps">
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-audit"/></svg><span class="steps__n">01</span><h3>Free audit</h3><p>Thirty minutes. We look at what you use, who does what by hand, and where your week goes.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-map"/></svg><span class="steps__n">02</span><h3>You keep the map</h3><p>One page: what to fix first, what it saves, what it costs. Yours either way.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-build"/></svg><span class="steps__n">03</span><h3>We build it</h3><p>Version one in two to three weeks, on your real numbers. You break it, we fix it while you watch.</p></li>
+        <li class="rv"><svg class="ill" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-runs"/></svg><span class="steps__n">04</span><h3>It runs</h3><p>We keep it alive and add to it every month. Month to month, no long contract.</p></li>
+      </ol>
+      <div class="price rv">
+        <svg class="ill ill--band" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-cost"/></svg>
+        <div>
+          <h3>What it costs</h3>
+          <p>The audit is free and the map is yours. After that, one price to build and one to run it. No hourly billing.</p>
+        </div>
+        <a class="btn" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap faq__grid">
+      <header>
+        <p class="kicker rv">Before you ask</p>
+        <h2 class="rv">The questions <em>every owner asks.</em></h2>
+        <svg class="ill ill--faq rv" viewBox="0 0 132 96" aria-hidden="true"><use href="#i-ask"/></svg>
+      </header>
+      <div class="rv">
+        <details><summary>Our POS is old and has no API.</summary><div class="a"><p>Normal in Lebanon. Almost every POS can export a file or print a Z report, and we read those on a schedule. If yours does neither, we read the tickets.</p></div></details>
+        <details><summary>We do not have recipe costs.</summary><div class="a"><p>Most kitchens do not. We cost your top twenty dishes from your own invoices in about a week. After that they reprice themselves every time a supplier moves.</p></div></details>
+        <details><summary>Our chef will not fill in another sheet.</summary><div class="a"><p>Good, because he does not have to. Nobody logs into anything new. Where we need a number nobody records today, we agree one small habit and show him what it is worth.</p></div></details>
+        <details><summary>A lot of our business is cash.</summary><div class="a"><p>Then the till, the app and the safe rarely agree. That gap is usually the first thing we show you, by shift, not at the end of the month.</p></div></details>
+        <details><summary>The delivery apps do not give us data.</summary><div class="a"><p>They give more than you think: the portal, the order emails and the payout statements. Together they show commission, promos, refunds and what really landed.</p></div></details>
+        <details><summary>Does it work in Arabic?</summary><div class="a"><p>Yes. Your chef asks in Arabic what the grill cost last night. Your accountant asks in English and gets the same number.</p></div></details>
+        <details><summary>What if it gets something wrong?</summary><div class="a"><p>Every number shows its source. When it is not sure it says so, and it never messages a supplier or a customer unless you set that rule.</p></div></details>
+        <details><summary>We are one small place, not a group.</summary><div class="a"><p>One place feels it faster, because you are the one counting at 1:20am. Smaller build, smaller price.</p></div></details>
+        <details><summary>How fast do we see something real?</summary><div class="a"><p>Two to three weeks to version one, on your own numbers. The morning message usually starts in week one.</p></div></details>
+        <details><summary>What about power cuts and internet?</summary><div class="a"><p>It runs in the cloud and reaches you on WhatsApp, so it works while your restaurant does not. If a system goes dark, it tells you instead of inventing numbers.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO YOU DEAL WITH -->
+  <section class="who">
+    <div class="wrap who__grid">
+      <div class="who__card rv">
+        <p class="kicker">Who you deal with</p>
+        <h2>You talk to the people who build it.</h2>
+        <p>We are a small team in Beirut and Montreal. We run our own ecommerce brands, so we spend our own money and live with our own numbers every morning. We build these systems for our companies first, then for clients here.</p>
+        <p>No account manager, no junior. The people who build your system run your audit, and they answer when something breaks at 9pm.</p>
+      </div>
+      <ul class="who__stats rv">
+        <li><b data-count="2">0</b><span>brands we run ourselves, on these systems</span></li>
+        <li><b data-count="7">0</b><span>days a week it runs without us</span></li>
+        <li><b data-count="3">0</b><span>weeks, at most, to version one</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRICING. Numbers are placeholders: set them in one place, here and in BUILD in the JS. -->
+  <section class="price-sec" id="pricing">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">Straight answer on price</p>
+        <h2 class="rv">We put the number here <em>so you can decide before the call.</em></h2>
+        <p class="lead rv">Nobody enjoys a call that ends in a surprise. Here is the shape of it. The exact number comes out of the free audit, once we know how messy your data really is.</p>
+      </header>
+
+      <div class="tiers rv">
+        <div class="tier">
+          <span class="tier__tag">Start here</span>
+          <h3>One venue</h3>
+          <p class="tier__price"><b>$3,500</b><i>to build</i></p>
+          <p class="tier__run">then <b>$450</b> a month to run it</p>
+          <ul>
+            <li>Your morning intelligence brief at 07:00, Arabic or English</li><li>Ask it anything, any hour, from your own tickets</li><li>Live menu costing and prime cost</li><li>Alerts on portion drift, price rises and voids</li>
+          </ul>
+          <p class="tier__for">For a single restaurant or café doing serious covers.</p>
+        </div>
+        <div class="tier tier--hot">
+          <span class="tier__tag">Most restaurants start here</span>
+          <h3>Venue plus delivery</h3>
+          <p class="tier__price"><b>$5,500</b><i>to build</i></p>
+          <p class="tier__run">then <b>$650</b> a month to run it</p>
+          <ul>
+            <li>Everything in One venue</li><li>All delivery platforms reconciled to what actually landed</li><li>Covers forecast and tomorrow’s prep sheet</li><li>It drafts your supplier and chase messages</li>
+          </ul>
+          <p class="tier__for">For places where delivery is a real part of the night.</p>
+        </div>
+        <div class="tier tier--dark">
+          <span class="tier__tag">Bigger</span>
+          <h3>Built around you</h3>
+          <p class="tier__price"><b>Let us look</b></p>
+          <p class="tier__run">quoted after the audit</p>
+          <ul>
+            <li>Many systems, many locations, or a system nobody else will touch</li>
+            <li>Your own rules, your own approvals, your own language</li>
+            <li>It writes and sends, not only reports</li>
+          </ul>
+          <p class="tier__for">For groups and companies where one point of margin is real money.</p>
+        </div>
+      </div>
+
+      <div class="price-why rv">
+        <div>
+          <h3>What moves the number</h3>
+          <ul class="price-why__list">
+            <li><b>How many systems talk.</b> One POS is quick. A POS, three delivery apps and a paper invoice file takes longer.</li>
+            <li><b>How messy the data is.</b> We have seen worse than yours. It still costs time.</li>
+            <li><b>How much it does by itself.</b> Reading is cheap. Writing, chasing and sending costs more to build and is worth more to you.</li>
+          </ul>
+        </div>
+        <div class="price-not">
+          <h3>When we say no</h3>
+          <p>If you do under roughly two hundred covers a week, the hours you save will not cover the build yet. We will say so.</p>
+          <p>We would rather tell you on a free call than take money for something that will not pay you back.</p>
+        </div>
+      </div>
+
+      <p class="price-cta rv">
+        <a class="btn" data-wa href="#audit">Get your number <span class="arr" aria-hidden="true">→</span></a>
+        <span>Thirty minutes. No deck, no sales sequence.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- THE GAP -->
+  <section class="gap" id="gap">
+    <div class="wrap">
+      <header class="head">
+        <p class="kicker rv">What waiting costs</p>
+        <h2 class="rv">Every month you wait, you hand over <em id="gapBig">$1,375</em>.</h2>
+        <p class="lead rv">Two points of margin on your sales. Nobody loses a restaurant in one night. You lose it two points at a time.</p>
+      </header>
+      <div class="gap__grid rv">
+        <figure class="panel">
+          <figcaption><b>Two points of margin, compounded</b><span class="legend"><i class="l-mint"></i>you, moving<i class="l-dim"></i>you, waiting</span></figcaption>
+          <svg class="chart" id="chartGap" viewBox="0 0 560 300" role="img" aria-label="What two points of margin adds up to over twenty four months"></svg>
+          <p class="panel__note" id="gapNote"></p>
+        </figure>
+        <ul class="gap__pts">
+        <li><b>Everyone gets the same tools now.</b> This used to need a data team and a year. Now it takes two weeks. The first one on your street to do it wins the year.</li>
+        <li><b>Speed is the whole game.</b> Catch the portion problem in week one, not week seven. Same chef, same menu, six weeks of margin saved.</li>
+        <li><b>You need zero new customers.</b> Every dollar in that chart already walked in, ate and paid. You just did not keep it.</li>
+        <li><b>Your competitor is not smarter.</b> He just knows on Tuesday what you find out in March.</li>
+        </ul>
+      </div>
+      <p class="gap__cta rv">
+        <a class="btn" data-wa href="#audit">Start before they do <span class="arr" aria-hidden="true">→</span></a>
+        <span>Thirty minutes, free, and the map is yours either way.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- AUDIT -->
+  <section class="audit" id="audit">
+    <div class="wrap audit__grid">
+      <div class="audit__copy rv">
+        <p class="kicker">The free audit</p>
+        <h2>Bring one night that did not add up.</h2>
+        <p class="lead">Thirty minutes, on a call or in your restaurant. Bring last week: Z reports, a few invoices, the delivery statements. You leave with one page showing where your money went. Keep it and walk away if you want.</p>
+        <a class="btn btn--wa btn--big" data-wa href="#form">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 12.6c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.6 7.6 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Book it on WhatsApp
+        </a>
+        <p class="note"><b>We build these ourselves. Three at a time.</b> If this month is full, we will tell you on the call. Beirut hours, same day answer.</p>
+      </div>
+
+      <form class="form rv" id="form" name="audit" method="POST" data-netlify="true" netlify-honeypot="website">
+        <input type="hidden" name="form-name" value="audit">
+        <input type="hidden" name="business" id="fBusiness" value="full">
+        <input type="hidden" name="page" value="restaurants">
+        <p class="form__hp"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>
+        <h3>Or leave your details</h3>
+        <label class="field"><span>Your name</span><input name="name" required autocomplete="name"></label>
+        <label class="field"><span>Name of the place</span><input name="company" required autocomplete="organization"></label>
+        <label class="field"><span>WhatsApp number</span><input name="whatsapp" required inputmode="tel" placeholder="+961 …" autocomplete="tel"></label>
+        <label class="field"><span>What is the number you never have in time?</span><textarea name="pain" rows="3" placeholder="Food cost by dish, what delivery really leaves us, covers forecast, waste, which branch is cheaper…"></textarea></label>
+        <button class="btn btn--block" type="submit">Send it <span class="arr" aria-hidden="true">→</span></button>
+        <p class="form__note" id="formNote">It goes straight to our team. No newsletter, no sales sequence.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 25c5 5 17 5 22 0" stroke="#15C7A4" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 15c5-5 17-5 22 0" stroke="#F0B25A" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg></span>
+      <span class="brand__name">Sanad<em>سند</em></span>
+    </a>
+    <p class="foot__line">Strategic intelligence for restaurants and cafés in Lebanon.</p>
+    <p class="foot__links"><a data-wa href="#audit">WhatsApp</a><a href="mailto:hello@example.com">Email</a><a href="#faq">Questions</a><a href="index.html">Other businesses</a></p>
+  </div>
+</footer>
+
+<aside class="sticky" id="sticky" aria-label="Book the free audit">
+  <span class="sticky__txt"><b>Free 30 minute audit</b><span>Bring last week, keep the map</span></span>
+  <a class="btn btn--sm" data-wa href="#audit">Book it <span class="arr" aria-hidden="true">→</span></a>
+</aside>
+
+<script src="resto.js" defer></script>
+</body>
+</html>

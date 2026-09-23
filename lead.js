@@ -38,6 +38,7 @@
     if ((d.phone.match(/\d/g) || []).length < 7) { note.textContent = 'Please check the phone number, it looks too short.'; form.phone && form.phone.focus(); return; }
     d.page = d.page || document.body.dataset.page || 'home';
     d.lead_id = id();
+    d.k = 'radar-2026';                                              // form key checked by the Google script
     d.seconds_on_page = Math.round((Date.now() - opened) / 1000);
     d.user_agent = navigator.userAgent.slice(0, 250);
     Object.assign(d, (window.radarAttribution && window.radarAttribution()) || {});

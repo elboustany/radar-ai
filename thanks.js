@@ -89,6 +89,11 @@
     setTimeout(() => { qi = (qi + 1) % Q.length; ask.textContent = Q[qi]; ask.classList.remove('is-out'); }, 380);
   }, 3400);
 
+  /* ---------- privacy: keep only the reference on this device once the page has what it needs ---------- */
+  if (L && L.id !== 'RD-PREVIEW') {
+    try { sessionStorage.setItem('radar_lead', JSON.stringify({ id: L.id, first: L.first, company: L.company, at: L.at, page: L.page })); } catch (e) {}
+  }
+
   /* ---------- Meta Pixel: Lead, once per lead ---------- */
   if (L && L.id && L.id !== 'RD-PREVIEW') {
     const key = 'radar_lead_tracked_' + L.id;

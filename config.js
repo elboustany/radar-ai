@@ -2,7 +2,7 @@
    Every page reads them, so each value lives in one place only. */
 window.RADAR = {
   // Google Apps Script web app URL that saves each lead to the Google Sheet and emails it (ends with /exec).
-  leadEndpoint: '',
+  leadEndpoint: 'https://script.google.com/macros/s/AKfycbwvslckt7dJOe1Mh4wbFxwtbibtftqui1PkG2V6xa8IJ0AfyTnz3_54p_p7ssux2yM/exec',
   // Meta Pixel ID, numbers only. Leave empty until the pixel exists: nothing loads without it.
   pixelId: '',
   // WhatsApp number that receives chats: digits only, country code first, e.g. '96170123456'.

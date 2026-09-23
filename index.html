@@ -193,7 +193,7 @@
       <div class="found__grid">
         <div class="found__card rv"><i>Margin leak</i><b>$1,900</b><span>a month, from one promotion nobody re-checked</span></div>
         <div class="found__card found__card--bad rv"><i>Supplier moved</i><b>+7%</b><span>on Tuesday’s invoice. No notice. Nobody caught it.</span></div>
-        <div class="found__card found__card--bad rv"><i>Cash at risk</i><b>45 days</b><span>one customer, with another order booked for tomorrow</span></div>
+        <div class="found__card found__card--bad rv"><i>Cash at risk</i><b>41 days</b><span>one customer, with another order booked for tomorrow</span></div>
       </div>
       <p class="note rv">Sample numbers. On your business it works on your real numbers, every night.</p>
     </div>
@@ -250,7 +250,7 @@
         <figure class="voice__desk">
           <img src="img/v-desk.webp" alt="A business owner at his desk with three screens, talking to Radar out loud" width="1600" height="1067" loading="lazy">
           <figcaption class="vb vb--q"><i>You</i>&ldquo;Which customer owes us the most?&rdquo;</figcaption>
-          <figcaption class="vb vb--a"><i>Radar</i>&ldquo;Karam Foods: $7,800, 41 days late. I wrote the reminder. Should I send it?&rdquo;</figcaption>
+          <figcaption class="vb vb--a"><i>Radar</i>&ldquo;Karam Foods: $3,400, 41 days late. I wrote the reminder. Should I send it?&rdquo;</figcaption>
         </figure>
         <figure class="voice__phone">
           <img src="img/v-phone.webp" alt="A shop owner speaking to the Radar app on his phone" width="800" height="1200" loading="lazy">
@@ -264,45 +264,74 @@
     </div>
   </section>
 
-  <section class="night" id="night">
+  <section class="night night--x" id="night">
+    <div class="nx-sky" aria-hidden="true"></div>
     <div class="wrap">
       <header class="head head--on">
         <p class="kicker rv">While you sleep</p>
         <h2 class="rv">What it does every night, <em>while you sleep.</em></h2>
         <p class="lead rv">Six jobs nobody in your company has time to do. Radar does them every night and sends you the result at 07:00.</p>
       </header>
-      <ol class="night__list">
-        <li class="rv" style="--i:0">
-          <span class="night__t">22:10</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-read"/></svg></span>
-          <div><h3>It reads the whole day</h3><p>Every sale, every order, every delivery. It finds the 12 lines that do not match.</p></div>
-        </li>
-        <li class="rv" style="--i:1">
-          <span class="night__t">23:30</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-match"/></svg></span>
-          <div><h3>It checks the money</h3><p>What the POS says against what reached the bank. It finds the gap months before your accountant.</p></div>
-        </li>
-        <li class="rv" style="--i:2">
-          <span class="night__t">01:40</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-price"/></svg></span>
-          <div><h3>It updates your costs</h3><p>New supplier invoices change the cost of every product. Tonight, two products stopped making a profit.</p></div>
-        </li>
-        <li class="rv" style="--i:3">
-          <span class="night__t">03:20</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-hunt"/></svg></span>
-          <div><h3>It looks for what changed</h3><p>A customer who stopped ordering. An ad that stopped working. Stock that runs out in four days.</p></div>
-        </li>
-        <li class="rv" style="--i:4">
-          <span class="night__t">06:40</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-pen"/></svg></span>
-          <div><h3>It writes your messages</h3><p>The reminder to the customer who is 41 days late. The question to the supplier. The stock order. Ready, you press send.</p></div>
-        </li>
-        <li class="rv" style="--i:5">
-          <span class="night__t">07:00</span>
-          <span class="night__ic"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-n-sun"/></svg></span>
-          <div><h3>At 07:00 it sends you 3 things to fix</h3><p>Not 30 numbers. Three clear actions, with the money each one is worth.</p></div>
-        </li>
-      </ol>
+      <div class="nx">
+        <div class="nx-list">
+        <span class="nx-rail" aria-hidden="true"><i class="nx-fill"></i></span>
+        <ol class="nx-steps">
+          <li class="nx-step" data-t="22:10">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">22:10</span>
+            <h3>It reads the whole day</h3>
+            <p class="nx-txt">Tonight it read <b>4,812 lines</b> from your sales, orders and deliveries. <b>12 of them</b> do not match.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+          <li class="nx-step" data-t="23:30">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">23:30</span>
+            <h3>It checks the money</h3>
+            <p class="nx-txt">It compares what you sold with what reached the bank. Tonight <b>$7,800</b> is missing, from three customers.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+          <li class="nx-step" data-t="01:40">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">01:40</span>
+            <h3>It updates your costs</h3>
+            <p class="nx-txt">Your paper supplier raised prices <b>7%</b> on Tuesday, with no notice. Now <b>two products lose money</b> on every sale.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+          <li class="nx-step" data-t="03:20">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">03:20</span>
+            <h3>It looks for what changed</h3>
+            <p class="nx-txt">It compares tonight with the last 12 weeks. The 2 for 1 offer costs you <b>$1,900 a month</b>, and nobody checked it again.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+          <li class="nx-step" data-t="06:40">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">06:40</span>
+            <h3>It writes your messages</h3>
+            <p class="nx-txt">Three messages are written and waiting for you. You read them and press send.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+          <li class="nx-step nx-step--dawn" data-t="07:00">
+            <span class="nx-dot" aria-hidden="true"></span>
+            <span class="nx-time">07:00</span>
+            <h3>At 07:00 it sends you 3 things to fix</h3>
+            <p class="nx-txt">They arrive on your phone, most urgent first, with the money each one is worth.</p>
+            <div class="nx-inline" aria-hidden="true"></div>
+          </li>
+        </ol>
+        </div>
+        <aside class="nx-stage" aria-hidden="true">
+          <div class="nx-stage__in">
+            <div class="nx-head">
+              <div class="nx-clock"><svg viewBox="0 0 60 60"><circle class="nx-ring" cx="30" cy="30" r="27"/><circle class="nx-arc" cx="30" cy="30" r="27" pathLength="1"/></svg><i class="nx-sweep"></i></div>
+              <div class="nx-read"><b class="nx-now">22:10</b><span class="nx-status">Radar is working. You are asleep.</span></div>
+              <div class="nx-bar"><div class="nx-bar__track"><i class="nx-bar__fill"></i></div><div class="nx-bar__ends"><span>22:00</span><span>07:00</span></div></div>
+            </div>
+            <div class="nx-viz"></div>
+            <div class="nx-tray"><span>Found tonight</span><ul></ul></div>
+          </div>
+        </aside>
+      </div>
       <p class="night__foot rv">Nobody on your team has to learn anything new. Your data stays in your accounts.</p>
       <p class="gap__cta rv"><a class="btn btn--light" data-wa href="#audit">Book the free audit <span class="arr" aria-hidden="true">→</span></a><span>Thirty minutes, free.</span></p>
     </div>
@@ -620,5 +649,6 @@
 </aside>
 
 <script src="app2.js" defer></script>
+<script src="night.js" defer></script>
 </body>
 </html>

@@ -614,7 +614,7 @@
   $$('.whocard[data-ind]').forEach((c) => c.addEventListener('click', () => setIndustry(c.dataset.ind, true)));
 
   /* ---------- the maths ---------- */
-  const BUILD = 3500; // illustration only: a typical build, used to draw the payback line
+  const BUILD = 2500; // the founding price floor, used to draw the payback line
   function calc() {
     const hours = +$('#sHours').value, rate = +$('#sRate').value, cut = +$('#sCut').value / 100;
     $('#vHours').textContent = hours + 'h';

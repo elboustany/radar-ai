@@ -989,3 +989,4 @@ html:not(.show-drafts) .ref[data-approved="false"] .ref__head{margin-bottom:0}
 }
 /* the floating audit bar steps aside while the night stage is on screen (desktop) */
 html.nx-live .sticky.is-on{transform:translateY(calc(100% + 24px))}
+.offer__from{align-self:center;font:700 13px/1.1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-right:-4px}

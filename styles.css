@@ -702,3 +702,67 @@ button.whocard:hover .whocard__img img{transform:scale(1.04)}
 .offer__box--big{background:var(--navy);border-color:var(--navy)}
 .offer__box--big i{color:#8FE8D4}.offer__box--big p{color:#B7CFDC}
 @media (max-width:1000px){ .anchors{grid-template-columns:minmax(0,1fr)} .offer{grid-template-columns:minmax(0,1fr)} .offer__inc{grid-template-columns:1fr} }
+
+/* ===== the app, and voice ===== */
+.voice{padding:var(--sec) 0}
+.voice__media{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,.9fr);gap:16px;margin-bottom:18px}
+.voice__desk,.voice__phone{position:relative;margin:0;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.voice__desk img,.voice__phone img{display:block;width:100%;height:100%;object-fit:cover}
+.vb{position:absolute;max-width:min(360px,58%);padding:14px 18px;border-radius:18px;font-size:15.5px;line-height:1.45;font-weight:600;
+  box-shadow:0 20px 40px -18px rgba(0,0,0,.55);backdrop-filter:blur(8px)}
+.vb i{display:block;font:700 11px/1 var(--mono);font-style:normal;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.vb--q{left:4%;top:7%;background:rgba(255,255,255,.94);color:var(--ink)}
+.vb--q i{color:var(--muted)}
+.vb--a{right:4%;bottom:7%;background:rgba(8,26,36,.9);color:#E4F1F7;border:1px solid rgba(63,224,190,.45)}
+.vb--a i{color:#6FF0D4}
+.voice__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.voice__card{padding:22px 22px 24px;border-radius:18px;background:var(--bg-2);border:1px solid var(--line)}
+.voice__ic{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--teal-soft);color:#0B7D6A;margin-bottom:12px}
+.voice__ic svg{width:24px;height:24px}
+.voice__card h3{font-size:18px;margin-bottom:6px}
+.voice__card p{font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+@media (max-width:900px){
+  .voice__media{grid-template-columns:minmax(0,1fr)}
+  .voice__phone{display:none}
+  .voice__grid{grid-template-columns:minmax(0,1fr)}
+  .vb{font-size:13.5px;padding:11px 14px;max-width:72%}
+}
+
+/* ===== client cards with logos; quotes wait for approval ===== */
+.ref__head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.ref__logo{width:56px;height:56px;border-radius:14px;flex:none}
+.ref__head b{display:block;font-size:17px}
+.ref__head i{display:block;font:500 12.5px/1.4 var(--mono);font-style:normal;color:var(--muted)}
+.ref[data-approved="false"] .ref__quote,.ref[data-approved="false"] .ref__who{display:none}
+.show-drafts .ref[data-approved="false"] .ref__quote{display:block}
+.show-drafts .ref[data-approved="false"] .ref__who{display:grid}
+.show-drafts .ref[data-approved="false"]{position:relative;outline:2px dashed #D9880F;outline-offset:3px}
+.show-drafts .ref[data-approved="false"]::before{content:"Draft · waiting for approval";position:absolute;top:-12px;right:16px;padding:5px 10px;border-radius:99px;
+  background:#FDF1DE;color:#9A5E06;font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.logo--img{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:auto;padding:18px 10px;border-style:solid}
+.logo--img img{width:56px;height:56px;border-radius:14px}
+.logo--img span{font:600 12.5px/1.2 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-2);text-align:center}
+.logos:has(.logo--img){grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:900px){ .logos:has(.logo--img){grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+/* logos in card heads: real marks, no placeholder dashes */
+.ref__head .ref__logo{border:0;margin:0;background:none;display:block}
+.ref--next{border:1.5px dashed var(--line-2);background:var(--bg-2);transition:border-color .25s,background .25s,transform .25s}
+.ref--next:hover{border-color:var(--teal);background:#fff;transform:translateY(-2px)}
+.ref__logo--mark svg{display:block;width:100%;height:100%}
+.ref__go{display:inline-flex;align-items:center;gap:7px;margin-top:2px;font-style:normal;font-weight:700;font-size:14.5px;color:var(--teal)}
+.ref--next:hover .arr{transform:translateX(3px)}
+.ref__go .arr{transition:transform .2s}
+/* until quotes are approved, brand cards are compact logo tiles */
+html:not(.show-drafts) .ref[data-approved="false"]{justify-content:center}
+html:not(.show-drafts) .ref[data-approved="false"] .ref__head{margin-bottom:0}
+.ref--next{justify-content:center}
+.ref--next .ref__head{margin-bottom:0}
+@media (max-width:900px){
+  html:not(.show-drafts) .refs{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  html:not(.show-drafts) .ref[data-approved="false"],html:not(.show-drafts) .ref--next{padding:18px 12px;align-items:center;text-align:center}
+  html:not(.show-drafts) .ref[data-approved="false"] .ref__head,html:not(.show-drafts) .ref--next .ref__head{flex-direction:column;gap:10px;margin-bottom:0}
+  html:not(.show-drafts) .ref__head b{font-size:15.5px}
+  html:not(.show-drafts) .ref__head i{font-size:11.5px}
+  .ref--next .ref__go{font-size:13.5px}
+}

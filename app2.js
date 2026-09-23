@@ -18,6 +18,8 @@
   const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
   const C = { teal: '#0E9E86', tealFill: 'rgba(14,158,134,.16)', dim: '#CEDDE7', amber: '#D9880F', rose: '#D9544A', text: '#456171', ink: '#0B1A24', grid: '#E9F0F5' };
   document.documentElement.classList.add('js');
+  /* draft testimonials only show with ?drafts=1, for approval screenshots */
+  if (new URLSearchParams(location.search).has('drafts')) document.documentElement.classList.add('show-drafts');
 
   /* ---------- WhatsApp ---------- */
   const waReady = /^\d{8,15}$/.test(WA);

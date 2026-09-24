@@ -91,15 +91,18 @@
 
   /* ---------- privacy: keep only the reference on this device once the page has what it needs ---------- */
   if (L && L.id !== 'RD-PREVIEW') {
-    try { sessionStorage.setItem('radar_lead', JSON.stringify({ id: L.id, first: L.first, company: L.company, at: L.at, page: L.page })); } catch (e) {}
+    try { sessionStorage.setItem('radar_lead', JSON.stringify({ id: L.id, first: L.first, company: L.company, at: L.at, page: L.page, role: L.role })); } catch (e) {}
   }
 
   /* ---------- Meta Pixel: Lead, once per lead ---------- */
   if (L && L.id && L.id !== 'RD-PREVIEW') {
     const key = 'radar_lead_tracked_' + L.id;
     let tracked = false; try { tracked = !!sessionStorage.getItem(key); } catch (e) {}
+    // Only owners and managers teach Meta what a good lead looks like. Anyone else gets a separate signal.
+    const qualified = !L.role || L.role === 'owner' || L.role === 'manager';
     if (!tracked && window.track) {
-      window.track('Lead', { content_name: 'Free audit', content_category: L.page || 'home' }, { eventID: L.id });
+      if (qualified) window.track('Lead', { content_name: 'Free audit', content_category: L.page || 'home', role: L.role || 'unknown' }, { eventID: L.id });
+      else window.track('LeadOther', { role: L.role, page: L.page || 'home' }, { eventID: L.id });
       try { sessionStorage.setItem(key, '1'); } catch (e) {}
     }
   }

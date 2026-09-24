@@ -627,6 +627,16 @@
         <input type="hidden" name="page" value="home">
         <p class="form__hp" aria-hidden="true"><label>Leave this empty <input name="url" tabindex="-1" autocomplete="off"></label></p>
         <h3>Or leave your details</h3>
+        <p class="form__for">For business owners and managers. We&rsquo;re not hiring right now.</p>
+        <fieldset class="role">
+          <legend>You are</legend>
+          <div class="role__opts">
+            <label><input type="radio" name="role" value="owner" required><span>A business owner</span></label>
+            <label><input type="radio" name="role" value="manager"><span>A manager at a company</span></label>
+            <label><input type="radio" name="role" value="job"><span>Looking for a job</span></label>
+            <label><input type="radio" name="role" value="other"><span>Something else</span></label>
+          </div>
+        </fieldset>
         <label class="field"><span>Your name</span><input name="name" required autocomplete="name"></label>
         <label class="field"><span>Company</span><input name="company" required autocomplete="organization"></label>
         <label class="field"><span>Website or Instagram</span><input name="website" required autocomplete="url" placeholder="yourcompany.com or @yourpage"></label>

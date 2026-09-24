@@ -103,3 +103,11 @@ body.ty{background:#061219;color:#fff;min-height:100vh;overflow-x:hidden}
   .ty *{animation:none!important;transition:none!important}
   .ty-blip,.ty-tag{opacity:1}
 }
+
+/* job seekers' page */
+.ty-job{min-height:66vh;display:grid;place-items:center;padding:30px 0 60px}
+.ty-job__card{max-width:660px}
+.ty-job__card h1{margin:16px 0 14px;font-size:clamp(34px,4.2vw,54px);line-height:1.05;letter-spacing:-.035em;color:#fff}
+.ty-job__card p{margin-bottom:12px}
+.ty-job__card a:not(.btn){color:#8FE8D4}
+.ty-job__card .btn{margin-top:14px}

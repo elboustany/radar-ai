@@ -22,10 +22,10 @@
     try {
       sessionStorage.setItem('radar_lead', JSON.stringify({
         id: d.lead_id, first: (d.name || '').trim().split(/\s+/)[0], company: d.company,
-        email: d.email, phone: d.phone, at: Date.now(), page: d.page,
+        email: d.email, phone: d.phone, at: Date.now(), page: d.page, role: d.role,
       }));
     } catch (e) {}
-    location.href = 'thank-you.html';
+    location.href = d.role === 'job' ? 'thanks-job.html' : 'thank-you.html';
   };
 
   form.addEventListener('submit', async (e) => {
@@ -34,7 +34,7 @@
     const f = new FormData(form);
     if (f.get('url')) return;                                        // honeypot: a bot filled the hidden field
     const d = {};
-    ['name', 'company', 'website', 'phone', 'email', 'message', 'business', 'page'].forEach((k) => { d[k] = String(f.get(k) || '').trim(); });
+    ['role', 'name', 'company', 'website', 'phone', 'email', 'message', 'business', 'page'].forEach((k) => { d[k] = String(f.get(k) || '').trim(); });
     if ((d.phone.match(/\d/g) || []).length < 7) { note.textContent = 'Please check the phone number, it looks too short.'; form.phone && form.phone.focus(); return; }
     d.page = d.page || document.body.dataset.page || 'home';
     d.lead_id = id();
@@ -52,6 +52,7 @@
         return done(d);
       } catch (err) { /* fall through to the backup below */ }
     }
+    if (d.role === 'job') return done(d);                            // job seekers never go to your WhatsApp or inbox
     // Backup while the sheet is not connected (or the network failed): hand the details over directly.
     if (waNumber) { window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(summary(d))}`, '_blank', 'noopener'); done(d); }
     else { location.href = `mailto:${inbox}?subject=${encodeURIComponent('Free audit request: ' + d.company)}&body=${encodeURIComponent(summary(d))}`; setTimeout(() => done(d), 1500); }

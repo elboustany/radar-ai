@@ -68,7 +68,7 @@
   /* ---------- WhatsApp and social links, only once they exist in config.js ---------- */
   if (/^\d{8,15}$/.test(String(C.whatsapp || ''))) {
     const wa = $('tyWa');
-    wa.href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(`Hi Radar team, I just requested the free audit${L && L.id ? ' (ref ' + L.id + ')' : ''}.`)}`;
+    wa.href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(`Hi Radar team! 👋 I just booked my free audit on your website${L && L.id ? ' (ref ' + L.id + ')' : ''}. Looking forward to talking!`)}`;
     wa.hidden = false;
   }
   const social = [['Instagram', C.instagram], ['Facebook', C.facebook]].filter((x) => x[1]);

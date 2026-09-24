@@ -6,7 +6,7 @@ window.RADAR = {
   // Meta Pixel ID, numbers only. Leave empty until the pixel exists: nothing loads without it.
   pixelId: '1576308963443590',
   // WhatsApp number that receives chats: digits only, country code first, e.g. '96170123456'.
-  whatsapp: '',
+  whatsapp: '9613232462',
   // Social pages, shown on the thank-you page once filled in.
   instagram: '',
   facebook: '',

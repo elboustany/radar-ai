@@ -29,6 +29,7 @@
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
     t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   /* eslint-enable */
+  fbq.disablePushState = true;                          // in-page jumps (#audit) are not new pages
   fbq('init', C.pixelId, window.RADAR_MATCH || {});   // the thank-you page sets RADAR_MATCH (email, phone) for better matching
   fbq('track', 'PageView');
   window.track = (name, params = {}, opts) => fbq(STD.includes(name) ? 'track' : 'trackCustom', name, params, opts || {});

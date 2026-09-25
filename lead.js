@@ -13,7 +13,7 @@
   const id = () => 'RD-' + Date.now().toString(36).toUpperCase().slice(-5) + Math.random().toString(36).slice(2, 5).toUpperCase();
 
   const summary = (d) => [
-    "Hi Radar team! 👋 I'd like to book a live demo.",
+    "Hi Radar team, I'd like to book a live demo.",
     `Name: ${d.name}`, `Company: ${d.company}`, `Website: ${d.website}`, `Phone: ${d.phone}`,
     d.email ? `Email: ${d.email}` : '', d.message ? `About: ${d.message}` : '',
   ].filter(Boolean).join('\n');

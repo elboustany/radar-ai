@@ -2,7 +2,15 @@
    SET YOUR NUMBER: change WA below to the WhatsApp number that should receive leads. */
 (() => {
   const WA = (window.RADAR && window.RADAR.whatsapp) || '961XXXXXXXX'; // set it in config.js
-  const WA_TEXT = "Hi Radar team! 👋 I saw your website and I'd like to book a live demo. My company is ";
+  /* Prefilled WhatsApp message, one per page, complete so nobody has to type before pressing Send.
+     No emoji: the wa.me redirect breaks 4-byte characters on desktop and WhatsApp Web. */
+  const PAGE = (document.body && document.body.dataset.page) || 'home';
+  const WA_TEXTS = {
+    restaurants: 'Hi Radar team, I run a restaurant in Lebanon and I want to book a live demo.',
+    distributors: 'Hi Radar team, I run a distribution business in Lebanon and I want to book the free audit.',
+    retail: 'Hi Radar team, I run a retail business in Lebanon and I want to book the free audit.',
+  };
+  const WA_TEXT = WA_TEXTS[PAGE] || 'Hi Radar team, I saw your website and I want to book a live demo.';
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));

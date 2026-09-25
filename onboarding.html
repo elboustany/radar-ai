@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar is learning your restaurant · Radar AI</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#061219">
+<meta name="description" content="Tell Radar about your restaurant before our meeting: your locations, your sales channels, the systems you use and what you want fixed first. Twelve minutes, saved as you go.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect width=%2248%22 height=%2248%22 rx=%2213%22 fill=%22%23153F57%22/%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2215%22 fill=%22none%22 stroke=%22%233FE0BE%22 stroke-opacity=%22.5%22 stroke-width=%221.8%22/%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%228.5%22 fill=%22none%22 stroke=%22%233FE0BE%22 stroke-opacity=%22.6%22 stroke-width=%221.8%22/%3E%3Cpath d=%22M24 24 L36.99 16.5%22 stroke=%22%236FF0D4%22 stroke-width=%222.2%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%222.5%22 fill=%22%236FF0D4%22/%3E%3Ccircle cx=%2229.6%22 cy=%2213.9%22 r=%222.7%22 fill=%22%23F0B25A%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="onboarding.css">
+</head>
+<body class="ob" data-page="onboarding">
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1576308963443590&amp;ev=PageView&amp;noscript=1"></noscript>
+<div class="ob-sky" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="rmBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#153F57"/><stop offset="1" stop-color="#061219"/></linearGradient>
+    <linearGradient id="rmSw" x1="0" y1="1" x2=".7" y2="0"><stop offset="0" stop-color="#3FE0BE" stop-opacity=".05"/><stop offset="1" stop-color="#3FE0BE" stop-opacity=".95"/></linearGradient>
+    <radialGradient id="rmGl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F0B25A" stop-opacity=".55"/><stop offset="1" stop-color="#F0B25A" stop-opacity="0"/></radialGradient>
+    <symbol id="radar-mark" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="13" fill="url(#rmBg)"/>
+      <rect x=".5" y=".5" width="47" height="47" rx="12.5" fill="none" stroke="#fff" stroke-opacity=".09"/>
+      <circle cx="24" cy="24" r="15" fill="none" stroke="#3FE0BE" stroke-opacity=".38" stroke-width="1.8"/>
+      <circle cx="24" cy="24" r="8.5" fill="none" stroke="#3FE0BE" stroke-opacity=".5" stroke-width="1.8"/>
+      <path d="M24 24 L24 9 A15 15 0 0 1 36.99 16.5 Z" fill="url(#rmSw)"/>
+      <path d="M24 24 L36.99 16.5" stroke="#6FF0D4" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="24" cy="24" r="2.5" fill="#6FF0D4"/>
+      <circle cx="29.6" cy="13.9" r="6" fill="url(#rmGl)"/>
+      <circle cx="29.6" cy="13.9" r="2.7" fill="#F0B25A"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="ob-top">
+  <a class="ob-logo" href="index.html" aria-label="Radar AI"><svg viewBox="0 0 48 48"><use href="#radar-mark"/></svg><span>Radar</span><i>AI</i></a>
+  <div class="ob-prog" id="prog" aria-hidden="true"><i></i></div>
+  <span class="ob-ref"><span id="refLab">Saved on this phone</span> <b id="refId"></b></span>
+</header>
+
+<main class="ob-main" id="main">
+  <section class="ob-card" id="card" aria-live="polite">
+    <!-- rendered by onboarding.js -->
+  </section>
+
+  <aside class="ob-hud" id="hud" aria-label="Your restaurant, so far">
+    <div class="ob-hud__top"><b>Your restaurant, so far</b><span class="ob-live">Building</span></div>
+    <div class="ob-radar" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs><linearGradient id="obSw" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3DE3C3" stop-opacity="0"/><stop offset="1" stop-color="#3DE3C3" stop-opacity=".5"/></linearGradient></defs>
+        <circle class="ring" cx="100" cy="100" r="96"/><circle class="ring" cx="100" cy="100" r="70"/><circle class="ring" cx="100" cy="100" r="44"/><circle class="ring" cx="100" cy="100" r="18"/>
+        <path d="M100 4V196M4 100H196" stroke="#3DE3C3" stroke-opacity=".14"/>
+        <g class="sweep"><path d="M100 100 L100 4 A96 96 0 0 1 183 52 Z" fill="url(#obSw)"/><path d="M100 100 L183 52" stroke="#6FF0D4" stroke-width="1.6" stroke-linecap="round"/></g>
+        <g id="blips"></g>
+      </svg>
+      <div class="ob-radar__c"><b id="hudPct">0%</b><span>complete</span></div>
+    </div>
+    <dl class="ob-facts" id="facts"></dl>
+    <div class="ob-ready" id="ready" hidden>
+      <div class="ob-ready__top"><span>Radar readiness</span><b id="readyPct">0%</b></div>
+      <div class="ob-ready__bar"><i id="readyBar"></i></div>
+      <ul id="readyList"></ul>
+    </div>
+    <div class="ob-insight" id="insight" hidden></div>
+  </aside>
+</main>
+
+<footer class="ob-foot">
+  <span>Your answers go only to the Radar team. No newsletter, nothing shared. Questions? <a data-wa href="#">WhatsApp us</a>.</span>
+</footer>
+
+<script>window.__obQuery = location.search;</script><!-- captured before track.js cleans the URL -->
+<script src="config.js"></script>
+<script src="track.js" defer></script>
+<script src="onboarding.js" defer></script>
+</body>
+</html>

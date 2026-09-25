@@ -649,7 +649,7 @@
   /* ---------- form: handled by lead.js (Google Sheet + email, then the thank-you page) ---------- */
 
   /* ---------- start each piece when it comes into view ---------- */
-  io((en) => { if (en.isIntersecting && !demoStarted) { demoStarted = true; playDemo(); } }, { rootMargin: '0px 0px 45% 0px', threshold: 0 }).observe(thread);
+  if (thread) io((en) => { if (en.isIntersecting && !demoStarted) { demoStarted = true; playDemo(); } }, { rootMargin: '0px 0px 45% 0px', threshold: 0 }).observe(thread);   // pages without the mini demo
   let boardDone = false;
   if ($('#app')) io((en) => { if (en.isIntersecting && !boardDone) { boardDone = true; renderBoard(); renderAlerts(); } }, { threshold: .2 }).observe($('#app'));
   let calcDone = false;

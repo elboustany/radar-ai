@@ -2,7 +2,7 @@
    SET YOUR NUMBER: change WA below to the WhatsApp number that should receive leads. */
 (() => {
   const WA = (window.RADAR && window.RADAR.whatsapp) || '961XXXXXXXX'; // set it in config.js
-  const WA_TEXT = "Hi Radar team! 👋 I saw your website and I'd like to book my free 30-minute audit. My company is ";
+  const WA_TEXT = "Hi Radar team! 👋 I saw your website and I'd like to book a live demo. My company is ";
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));

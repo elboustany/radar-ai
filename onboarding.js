@@ -80,7 +80,7 @@
         { key: 'google', label: 'Google Business profile', type: 'chips', options: [['yes', 'Yes, we manage it'], ['exists', 'It exists, nobody manages it'], ['no', 'No']] },
         { key: 'instagram', label: 'Instagram', type: 'text', placeholder: '@yourrestaurant', opt: true },
       ] },
-    { id: 'pain', kicker: 'Part 5 of 6', title: 'Costs, and <em>what hurts.</em>', intro: 'The honest version. This is what the audit is built around.',
+    { id: 'pain', kicker: 'Part 5 of 6', title: 'Costs, and <em>what hurts.</em>', intro: 'The honest version. This is what the demo is built around.',
       fields: [
         { key: 'food_cost', label: 'Your food cost today', type: 'chips', required: true, options: [['lt28', 'Under 28%'], ['28-32', '28% to 32%'], ['32-36', '32% to 36%'], ['36-40', '36% to 40%'], ['40+', 'Over 40%'], ['dk', 'I do not know']], hint: 'Cost of ingredients and drinks sold, as a share of sales.' },
         { key: 'rent', label: 'Rent, all locations, per month', type: 'chips', options: [['lt2k', 'Under $2,000'], ['2-5k', '$2,000 to $5,000'], ['5-10k', '$5,000 to $10,000'], ['10-25k', '$10,000 to $25,000'], ['25k+', 'Over $25,000'], ['own', 'We own the place']] },
@@ -160,7 +160,7 @@
         <div><i>01</i><div><b>You and your restaurants</b><span>Who you are, every location, the team.</span></div></div>
         <div><i>02</i><div><b>Sales and channels</b><span>Dine-in, the apps, cash, lira, what each one takes.</span></div></div>
         <div><i>03</i><div><b>What Radar will read</b><span>Your POS, your accounts, your invoices. No passwords.</span></div></div>
-        <div><i>04</i><div><b>What hurts, and what you want first</b><span>The audit is built around this.</span></div></div>
+        <div><i>04</i><div><b>What hurts, and what you want first</b><span>The demo is built around this.</span></div></div>
       </div>
       <div class="ob-nav"><span class="ob-skip">Prefer to talk? <a data-wa href="#">Send voice notes on WhatsApp</a> instead.</span>
         <button class="ob-next" data-go="next">${resume ? 'Continue where I stopped' : 'Start'} <span class="arr" aria-hidden="true">→</span></button></div>
@@ -226,7 +226,7 @@
       <h2>Check, then <em>send it to us.</em></h2>
       <p class="ob-intro">Tap a part to change it. When you send, our team gets everything and starts preparing your meeting.</p>
       <div class="ob-rev">${STEPS.map((s, i) => `<section><h3>${esc(s.title.replace(/<[^>]+>/g, ''))}<button type="button" data-edit="${i}">Change</button></h3><dl>${s.fields.filter(visible).map((f) => { const v = display(f); return v ? `<dt>${esc(f.label)}</dt><dd>${esc(v)}</dd>` : ''; }).join('') || '<dd class="empty">Nothing yet.</dd>'}</dl></section>`).join('')}</div>
-      <label class="ob-consent" style="margin-top:14px"><input type="checkbox" id="consent" ${A.consent ? 'checked' : ''}><span>I am sharing this so the Radar team can prepare my audit. It stays with the team, under the NDA we sign, and is never sold or shared.</span></label>
+      <label class="ob-consent" style="margin-top:14px"><input type="checkbox" id="consent" ${A.consent ? 'checked' : ''}><span>I am sharing this so the Radar team can prepare my demo. It stays with the team, under the NDA we sign, and is never sold or shared.</span></label>
       <div class="ob-q is-consent" data-q="consent" style="padding:6px 0 0;border:0"><span class="ob-err">Tick the box so we are allowed to keep your answers.</span></div>
       <div class="ob-nav"><button class="ob-back" data-go="back">← Back</button><button class="ob-next" data-go="send">Send to the Radar team <span class="arr" aria-hidden="true">→</span></button></div>
       <p class="ob-skip" id="sendNote" style="margin-top:10px"></p>

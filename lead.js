@@ -1,4 +1,4 @@
-/* The audit form: sends every lead to the Google Sheet (which also emails it), then opens the thank-you page.
+/* The live demo form: sends every lead to the Google Sheet (which also emails it), then opens the thank-you page.
    If the sheet link is not set yet, the lead goes out by WhatsApp or email instead, so nothing is lost. */
 (() => {
   const C = window.RADAR || {};
@@ -13,7 +13,7 @@
   const id = () => 'RD-' + Date.now().toString(36).toUpperCase().slice(-5) + Math.random().toString(36).slice(2, 5).toUpperCase();
 
   const summary = (d) => [
-    "Hi Radar team! 👋 I'd like to book my free 30-minute audit.",
+    "Hi Radar team! 👋 I'd like to book a live demo.",
     `Name: ${d.name}`, `Company: ${d.company}`, `Website: ${d.website}`, `Phone: ${d.phone}`,
     d.email ? `Email: ${d.email}` : '', d.message ? `About: ${d.message}` : '',
   ].filter(Boolean).join('\n');
@@ -55,6 +55,6 @@
     if (d.role === 'job') return done(d);                            // job seekers never go to your WhatsApp or inbox
     // Backup while the sheet is not connected (or the network failed): hand the details over directly.
     if (waNumber) { window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(summary(d))}`, '_blank', 'noopener'); done(d); }
-    else { location.href = `mailto:${inbox}?subject=${encodeURIComponent('Free audit request: ' + d.company)}&body=${encodeURIComponent(summary(d))}`; setTimeout(() => done(d), 1500); }
+    else { location.href = `mailto:${inbox}?subject=${encodeURIComponent('Live demo request: ' + d.company)}&body=${encodeURIComponent(summary(d))}`; setTimeout(() => done(d), 1500); }
   });
 })();

@@ -68,7 +68,7 @@
   /* ---------- WhatsApp and social links, only once they exist in config.js ---------- */
   if (/^\d{8,15}$/.test(String(C.whatsapp || ''))) {
     const wa = $('tyWa');
-    wa.href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(`Hi Radar team! 👋 I just booked my free audit on your website${L && L.id ? ' (ref ' + L.id + ')' : ''}. Looking forward to talking!`)}`;
+    wa.href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(`Hi Radar team! 👋 I just booked a live demo on your website${L && L.id ? ' (ref ' + L.id + ')' : ''}. Looking forward to talking!`)}`;
     wa.hidden = false;
   }
   const social = [['Instagram', C.instagram], ['Facebook', C.facebook]].filter((x) => x[1]);
@@ -101,7 +101,7 @@
     // Only owners and managers teach Meta what a good lead looks like. Anyone else gets a separate signal.
     const qualified = !L.role || L.role === 'owner' || L.role === 'manager';
     if (!tracked && window.track) {
-      if (qualified) window.track('Lead', { content_name: 'Free audit', content_category: L.page || 'home', role: L.role || 'unknown' }, { eventID: L.id });
+      if (qualified) window.track('Lead', { content_name: 'Live demo', content_category: L.page || 'home', role: L.role || 'unknown' }, { eventID: L.id });
       else window.track('LeadOther', { role: L.role, page: L.page || 'home' }, { eventID: L.id });
       try { sessionStorage.setItem(key, '1'); } catch (e) {}
     }

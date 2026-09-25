@@ -51,13 +51,13 @@
         en: `<b>Good morning.</b> Three things worth your time.<br><br>
           <span class="n">1</span>Hamra's average basket is down <b>8% for three weeks</b>. Same footfall. The 2 for 1 is pulling people off full price. About <b>$1,900 a month</b>.<br><br>
           <span class="n">2</span>Your paper supplier raised prices <b>7%</b> on Tuesday. No notice. Nobody caught it.<br><br>
-          <span class="n">3</span>Karam Foods hits <b>45 days</b> on Thursday and has an order booked for tomorrow.<br><br>
-          Hold the order, or reprice the 2 for 1?<span class="src">POS · invoices · supplier prices</span><span class="t">07:00</span>`,
+          <span class="n">3</span><b>$2,300</b> of stock expires within 30 days. Two of those products are on this week's promo list.<br><br>
+          Move the dairy to the front, or reprice the 2 for 1?<span class="src">POS · invoices · supplier prices</span><span class="t">07:00</span>`,
         ar: `<b>صباح الخير.</b> 3 أمور بتستاهل وقتك.<br><br>
           <span class="n">1</span>معدل السلة بالحمرا نازل <b>8% من 3 أسابيع</b>. نفس عدد الزباين. عرض 2 بسعر 1 عم يسحب الناس عن السعر الكامل. حوالي <b>1,900$ بالشهر</b>.<br><br>
           <span class="n">2</span>مورد الورق رفع الأسعار <b>7%</b> يوم الثلاثاء. بلا إشعار. ما حدا انتبه.<br><br>
-          <span class="n">3</span>كرم للمواد الغذائية بيوصل <b>45 يوم</b> الخميس وعندهن طلبية بكرا.<br><br>
-          نوقّف الطلبية، ولا نعيد تسعير العرض؟<span class="src">نقاط البيع · الفواتير · أسعار الموردين</span><span class="t">07:00</span>`,
+          <span class="n">3</span>في بضاعة بـ <b>2,300$</b> بتنتهي صلاحيتها خلال 30 يوم. صنفين منها عالعرض هالأسبوع.<br><br>
+          نقدّم الألبان لقدّام، ولا نعيد تسعير العرض؟<span class="src">نقاط البيع · الفواتير · أسعار الموردين</span><span class="t">07:00</span>`,
       },
       chips: [
         { chart: [{ l: 'mix', v: -1.4, bad: true }, { l: 'prices', v: -0.6, bad: true }, { l: 'discount', v: -0.4, bad: true }, { l: 'shrink', v: -0.2, bad: true }],
@@ -182,10 +182,10 @@
       bars: [{ l: 'Beirut', v: 19 }, { l: 'Bekaa', v: 13 }, { l: 'Tripoli', v: 11 }, { l: 'South', v: 4, bad: true }],
       bridge: [{ l: 'fuel', v: -1.8 }, { l: 'returns', v: -1.1 }, { l: 'half vans', v: -0.7 }, { l: 'price rise', v: 1.2 }],
       donut: [{ l: 'Purchases', v: 62 }, { l: 'Fleet', v: 14 }, { l: 'Staff', v: 16 }, { l: 'Everything else', v: 8 }],
-      riskTitle: 'Overdue, ranked by how they usually pay', riskTag: '$41,300',
-      risk: [{ l: 'Mansour Markets', v: '$8,900', s: '94 days · orders again tomorrow' }, { l: 'Zahle Foods', v: '$6,200', s: '77 days · 6% returns' }, { l: 'Sour Distributors', v: '$4,100', s: '66 days · pays after a call' }],
+      riskTitle: 'Overdue, ranked by how they usually pay', riskTag: '$18,400',
+      risk: [{ l: 'Mansour Markets', v: '$8,900', s: '52 days · orders again tomorrow' }, { l: 'Zahle Foods', v: '$6,200', s: '44 days · 6% returns' }, { l: 'Sour Distributors', v: '$3,300', s: '38 days · pays after a call' }],
       alerts: [
-        { t: 'Mansour ordered again at 94 days late', d: 'The van leaves at 06:00. Holding it has recovered payment within 11 days twice before.', lvl: 'bad' },
+        { t: 'Mansour ordered again at 52 days late', d: 'The van leaves at 06:00. Holding it has recovered payment within 11 days twice before.', lvl: 'bad' },
         { t: 'South route margin fell to 4%', d: 'Fuel plus half empty vans. The Thursday merge takes it to 11%.', lvl: 'warn' },
         { t: 'Sunflower oil covers 6 days, lead time is 21', d: 'Purchase order drafted, waiting on you.', lvl: 'bad' },
         { t: 'Beirut route hit 96% fill', d: 'Best week this quarter, and cost per drop fell to $7.80 there.', lvl: 'good' },
@@ -254,7 +254,8 @@
     },
   };
 
-  let ind = 'dist';
+  const LOCK = document.body.dataset.ind;                       // industry pages lock the demo to one business type
+  let ind = LOCK && ['retail', 'resto', 'dist', 'ecom'].includes(LOCK) ? LOCK : 'dist';
   let lang = 'en';
 
   /* ---------- phone demo ---------- */
@@ -307,7 +308,7 @@
   async function playDemo() {
     thread.innerHTML = '';
     renderChips();
-    $('#demoWho').textContent = IND[ind].who;
+    if ($('#demoWho')) $('#demoWho').textContent = IND[ind].who;
     busy = true;
     const dots = typing();
     await wait(800);
@@ -505,7 +506,7 @@
     ind = next;
     $$('.pick__btn').forEach((b) => { b.classList.toggle('is-on', b.dataset.ind === ind); b.setAttribute('aria-selected', b.dataset.ind === ind); });
     $$('.whocard[data-ind]').forEach((c) => c.classList.toggle('is-on', c.dataset.ind === ind));
-    $('#fBusiness').value = ind;
+    if ($('#fBusiness')) $('#fBusiness').value = ind;
     playDemo();
     renderBoard();
     renderAlerts();
@@ -606,7 +607,7 @@
 
   if (!reduce && matchMedia('(pointer:fine)').matches) {
     const glow = $('.glow');
-    addEventListener('pointermove', (e) => {
+    if (glow) addEventListener('pointermove', (e) => {
       glow.style.setProperty('--mx', `${(e.clientX / innerWidth) * 100}%`);
       glow.style.setProperty('--my', `${(e.clientY / innerHeight) * 100}%`);
     }, { passive: true });

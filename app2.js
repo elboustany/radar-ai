@@ -463,7 +463,8 @@
   }
 
   function renderAlerts() {
-    if (!$('#alerts')) return;
+    // Only the old demo list (a <ul id="alerts">) takes this; the command-center pages use #alerts for the phone section.
+    if (!$('#alerts') || $('#alerts').tagName !== 'UL') return;
     $('#alerts').innerHTML = IND[ind].alerts.map((a) => `
       <li class="alert alert--${a.lvl}">
         <span class="alert__dot" aria-hidden="true"></span>
